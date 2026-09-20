@@ -18,7 +18,7 @@ export default async function ServicesPage({
 
   return (
     <div className="max-w-3xl">
-      <h1 className="font-display text-2xl font-extrabold tracking-tight text-navy">
+      <h1 className="font-display text-2xl font-extrabold tracking-tight text-heading">
         Services
       </h1>
       <p className="mt-1 text-sm text-ink-muted">
@@ -26,7 +26,7 @@ export default async function ServicesPage({
       </p>
 
       <form action={saveService} className="mt-8 space-y-5 rounded-3xl border border-cool bg-surface p-6">
-        <h2 className="font-display text-base font-bold text-navy">
+        <h2 className="font-display text-base font-bold text-heading">
           {editing ? `Edit: ${editing.name}` : "Add a service"}
         </h2>
 
@@ -34,37 +34,37 @@ export default async function ServicesPage({
 
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-navy">Name</label>
+            <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-heading">Name</label>
             <input id="name" name="name" defaultValue={editing?.name} className={inputCls} required />
           </div>
           <div>
-            <label htmlFor="slug" className="mb-1.5 block text-sm font-semibold text-navy">Slug</label>
+            <label htmlFor="slug" className="mb-1.5 block text-sm font-semibold text-heading">Slug</label>
             <input id="slug" name="slug" defaultValue={editing?.slug} placeholder="house-deep-cleaning" className={inputCls} required />
           </div>
         </div>
 
         <div>
-          <label htmlFor="short" className="mb-1.5 block text-sm font-semibold text-navy">Short description</label>
+          <label htmlFor="short" className="mb-1.5 block text-sm font-semibold text-heading">Short description</label>
           <input id="short" name="short" defaultValue={editing?.short} className={inputCls} required />
         </div>
 
         <div className="grid gap-5 sm:grid-cols-3">
           <div>
-            <label htmlFor="features" className="mb-1.5 block text-sm font-semibold text-navy">Features (one per line)</label>
+            <label htmlFor="features" className="mb-1.5 block text-sm font-semibold text-heading">Features (one per line)</label>
             <textarea id="features" name="features" rows={4} defaultValue={editing?.features?.join("\n")} className={inputCls} />
           </div>
           <div>
-            <label htmlFor="whatWeClean" className="mb-1.5 block text-sm font-semibold text-navy">What we clean</label>
+            <label htmlFor="whatWeClean" className="mb-1.5 block text-sm font-semibold text-heading">What we clean</label>
             <textarea id="whatWeClean" name="whatWeClean" rows={4} defaultValue={editing?.whatWeClean?.join("\n")} className={inputCls} />
           </div>
           <div>
-            <label htmlFor="included" className="mb-1.5 block text-sm font-semibold text-navy">What's included</label>
+            <label htmlFor="included" className="mb-1.5 block text-sm font-semibold text-heading">What's included</label>
             <textarea id="included" name="included" rows={4} defaultValue={editing?.included?.join("\n")} className={inputCls} />
           </div>
         </div>
 
         <div>
-          <label htmlFor="faqs" className="mb-1.5 block text-sm font-semibold text-navy">
+          <label htmlFor="faqs" className="mb-1.5 block text-sm font-semibold text-heading">
             FAQs (one per line: <span className="font-mono text-xs">Question | Answer</span>)
           </label>
           <textarea id="faqs" name="faqs" rows={4} defaultValue={editing?.faqs?.map((f) => `${f.q} | ${f.a}`).join("\n")} className={inputCls} />
@@ -86,7 +86,7 @@ export default async function ServicesPage({
         {list.map((s) => (
           <div key={s.id} className="flex items-center justify-between rounded-2xl border border-cool bg-surface px-5 py-4">
             <div>
-              <p className="font-semibold text-navy">{s.name}</p>
+              <p className="font-semibold text-heading">{s.name}</p>
               <p className="text-xs text-ink-muted">/{s.slug}</p>
             </div>
             <div className="flex items-center gap-2">

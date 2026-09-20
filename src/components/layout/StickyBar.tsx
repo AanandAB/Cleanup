@@ -12,7 +12,7 @@ export function StickyBar() {
     <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-cool/70 bg-surface pb-[env(safe-area-inset-bottom)] md:hidden">
       <a
         href={telLink()}
-        className="flex min-h-14 flex-col items-center justify-center gap-0.5 text-navy transition-colors active:bg-cool/60"
+        className="flex min-h-14 flex-col items-center justify-center gap-0.5 text-heading transition-colors active:bg-cool/60"
         aria-label="Call Clean UP"
       >
         <Phone className="h-5 w-5" />

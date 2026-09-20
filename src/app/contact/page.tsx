@@ -46,7 +46,7 @@ export default async function ContactPage() {
                   <MessageCircle className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="font-display text-base font-bold text-navy">WhatsApp</p>
+                  <p className="font-display text-base font-bold text-heading">WhatsApp</p>
                   <p className="mt-0.5 text-sm text-ink-muted">Fastest — send us a message and we reply quickly.</p>
                   <a href={waHref} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm font-semibold text-brand">
                     Chat on WhatsApp →
@@ -61,7 +61,7 @@ export default async function ContactPage() {
                   <Phone className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="font-display text-base font-bold text-navy">Phone</p>
+                  <p className="font-display text-base font-bold text-heading">Phone</p>
                   <p className="mt-0.5 text-sm text-ink-muted">{hours}</p>
                   <a href={telHref} className="mt-2 inline-block text-sm font-semibold text-brand">
                     Call now →
@@ -76,7 +76,7 @@ export default async function ContactPage() {
                   <Mail className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="font-display text-base font-bold text-navy">Email</p>
+                  <p className="font-display text-base font-bold text-heading">Email</p>
                   <a href={`mailto:${email}`} className="mt-0.5 block text-sm text-ink-muted transition-colors hover:text-brand">
                     {email}
                   </a>
@@ -90,7 +90,7 @@ export default async function ContactPage() {
                   <MapPin className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="font-display text-base font-bold text-navy">Location</p>
+                  <p className="font-display text-base font-bold text-heading">Location</p>
                   <p className="mt-0.5 text-sm text-ink-muted">{addressLine}</p>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export default async function ContactPage() {
                   <Clock className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="font-display text-base font-bold text-navy">Hours</p>
+                  <p className="font-display text-base font-bold text-heading">Hours</p>
                   <p className="mt-0.5 text-sm text-ink-muted">{hours}</p>
                 </div>
               </div>

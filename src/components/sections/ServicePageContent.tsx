@@ -39,7 +39,7 @@ export function ServicePageContent({ service }: { service: ServiceContent }) {
       </section>
 
       {/* What's included */}
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-surface py-16 md:py-20">
         <Container>
           <SectionHeading
             eyebrow="What's Included"
@@ -72,7 +72,7 @@ export function ServicePageContent({ service }: { service: ServiceContent }) {
             {processSteps.map((s) => (
               <div key={s.n} className="rounded-2xl border border-cool bg-surface p-5">
                 <span className="font-display text-sm font-bold text-brand">{s.n}</span>
-                <h3 className="mt-2 font-display text-base font-bold text-navy">{s.title}</h3>
+                <h3 className="mt-2 font-display text-base font-bold text-heading">{s.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{s.desc}</p>
               </div>
             ))}
@@ -81,7 +81,7 @@ export function ServicePageContent({ service }: { service: ServiceContent }) {
       </section>
 
       {/* FAQs */}
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-surface py-16 md:py-20">
         <Container className="max-w-3xl">
           <SectionHeading
             eyebrow="FAQ"

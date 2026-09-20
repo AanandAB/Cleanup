@@ -24,7 +24,7 @@ type FormValues = z.infer<typeof schema>;
 const inputCls =
   "w-full rounded-xl border border-cool bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink-muted/60 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
 
-const labelCls = "mb-1.5 block text-sm font-semibold text-navy";
+const labelCls = "mb-1.5 block text-sm font-semibold text-heading";
 
 function FieldError({ msg }: { msg?: string }) {
   if (!msg) return null;
@@ -63,7 +63,7 @@ export function EstimateForm() {
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366]/15 text-[#128C7E]">
           <MessageCircle className="h-6 w-6" />
         </div>
-        <p className="mt-4 font-display text-xl font-bold text-navy">
+        <p className="mt-4 font-display text-xl font-bold text-heading">
           Thanks — your request is ready.
         </p>
         <p className="mt-2 text-sm text-ink-muted">

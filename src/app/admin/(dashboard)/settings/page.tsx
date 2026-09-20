@@ -21,7 +21,7 @@ export default async function SettingsPage() {
 
   return (
     <div className="max-w-2xl">
-      <h1 className="font-display text-2xl font-extrabold tracking-tight text-navy">
+      <h1 className="font-display text-2xl font-extrabold tracking-tight text-heading">
         Settings
       </h1>
       <p className="mt-1 text-sm text-ink-muted">
@@ -33,7 +33,7 @@ export default async function SettingsPage() {
           <div key={f.key}>
             <label
               htmlFor={f.key}
-              className="mb-1.5 block text-sm font-semibold text-navy"
+              className="mb-1.5 block text-sm font-semibold text-heading"
             >
               {f.label}
             </label>

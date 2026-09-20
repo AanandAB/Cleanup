@@ -6,7 +6,7 @@ import { faqs } from "@/content/home";
 
 export function FAQ() {
   return (
-    <section className="bg-white py-20 md:py-28">
+    <section className="bg-surface py-20 md:py-28">
       <Container className="max-w-3xl">
         <Reveal>
           <SectionHeading

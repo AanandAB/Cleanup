@@ -31,6 +31,7 @@ export const siteConfig = {
 
   url: "https://cleanup.example.com", // PLACEHOLDER — replace with real domain
   hours: "Mon – Sat · 8:00 AM – 7:00 PM",
+  reviewLink: "https://share.google/s6hP4IaQ3qzuZgb5W", // Google Business review link
 
   social: {
     instagram: "https://www.instagram.com/", // PLACEHOLDER

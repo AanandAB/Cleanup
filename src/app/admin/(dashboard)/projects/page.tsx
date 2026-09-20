@@ -18,7 +18,7 @@ export default async function ProjectsPage({
 
   return (
     <div className="max-w-3xl">
-      <h1 className="font-display text-2xl font-extrabold tracking-tight text-navy">
+      <h1 className="font-display text-2xl font-extrabold tracking-tight text-heading">
         Projects
       </h1>
       <p className="mt-1 text-sm text-ink-muted">
@@ -26,7 +26,7 @@ export default async function ProjectsPage({
       </p>
 
       <form action={saveProject} className="mt-8 space-y-5 rounded-3xl border border-cool bg-surface p-6">
-        <h2 className="font-display text-base font-bold text-navy">
+        <h2 className="font-display text-base font-bold text-heading">
           {editing ? `Edit: ${editing.title}` : "Add a project"}
         </h2>
 
@@ -34,35 +34,35 @@ export default async function ProjectsPage({
 
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="title" className="mb-1.5 block text-sm font-semibold text-navy">Title</label>
+            <label htmlFor="title" className="mb-1.5 block text-sm font-semibold text-heading">Title</label>
             <input id="title" name="title" defaultValue={editing?.title} placeholder="3 BHK Deep Cleaning" className={inputCls} required />
           </div>
           <div>
-            <label htmlFor="slug" className="mb-1.5 block text-sm font-semibold text-navy">Slug</label>
+            <label htmlFor="slug" className="mb-1.5 block text-sm font-semibold text-heading">Slug</label>
             <input id="slug" name="slug" defaultValue={editing?.slug} placeholder="3bhk-deep-cleaning-kuthuparamba" className={inputCls} required />
           </div>
           <div>
-            <label htmlFor="location" className="mb-1.5 block text-sm font-semibold text-navy">Location</label>
+            <label htmlFor="location" className="mb-1.5 block text-sm font-semibold text-heading">Location</label>
             <input id="location" name="location" defaultValue={editing?.location} placeholder="Kuthuparamba" className={inputCls} required />
           </div>
           <div>
-            <label htmlFor="type" className="mb-1.5 block text-sm font-semibold text-navy">Service type</label>
+            <label htmlFor="type" className="mb-1.5 block text-sm font-semibold text-heading">Service type</label>
             <input id="type" name="type" defaultValue={editing?.type} placeholder="House Deep Cleaning" className={inputCls} required />
           </div>
         </div>
 
         <div>
-          <label htmlFor="description" className="mb-1.5 block text-sm font-semibold text-navy">Description</label>
+          <label htmlFor="description" className="mb-1.5 block text-sm font-semibold text-heading">Description</label>
           <textarea id="description" name="description" rows={4} defaultValue={editing?.description ?? ""} className={inputCls} />
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="beforeImage" className="mb-1.5 block text-sm font-semibold text-navy">Before image URL</label>
+            <label htmlFor="beforeImage" className="mb-1.5 block text-sm font-semibold text-heading">Before image URL</label>
             <input id="beforeImage" name="beforeImage" defaultValue={editing?.beforeImage ?? ""} placeholder="https://… or /media/…" className={inputCls} />
           </div>
           <div>
-            <label htmlFor="afterImage" className="mb-1.5 block text-sm font-semibold text-navy">After image URL</label>
+            <label htmlFor="afterImage" className="mb-1.5 block text-sm font-semibold text-heading">After image URL</label>
             <input id="afterImage" name="afterImage" defaultValue={editing?.afterImage ?? ""} placeholder="https://… or /media/…" className={inputCls} />
           </div>
         </div>
@@ -83,7 +83,7 @@ export default async function ProjectsPage({
         {list.map((p) => (
           <div key={p.id} className="flex items-center justify-between rounded-2xl border border-cool bg-surface px-5 py-4">
             <div>
-              <p className="font-semibold text-navy">{p.title}</p>
+              <p className="font-semibold text-heading">{p.title}</p>
               <p className="text-xs text-ink-muted">{p.location} · {p.type}</p>
             </div>
             <div className="flex items-center gap-2">

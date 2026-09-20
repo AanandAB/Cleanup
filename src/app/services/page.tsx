@@ -36,7 +36,7 @@ export default async function ServicesPage() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand via-electric to-brand-light text-white shadow-lg shadow-brand/25">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h2 className="mt-5 font-display text-xl font-bold text-navy">{s.name}</h2>
+                <h2 className="mt-5 font-display text-xl font-bold text-heading">{s.name}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">{s.short}</p>
                 <ul className="mt-4 space-y-2">
                   {(s.features ?? []).map((f) => (

@@ -14,7 +14,7 @@ export function PageHeader({
   intro?: string;
 }) {
   return (
-    <section className="border-b border-cool/70 bg-gradient-to-b from-white to-ice pb-12 pt-16 md:pb-16 md:pt-24">
+    <section className="border-b border-cool/70 bg-gradient-to-b from-surface to-ice pb-12 pt-16 md:pb-16 md:pt-24">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }}
@@ -38,7 +38,7 @@ export function PageHeader({
           ))}
         </nav>
 
-        <h1 className="mt-4 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-navy sm:text-4xl md:text-5xl">
+        <h1 className="mt-4 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-heading sm:text-4xl md:text-5xl">
           {title}
         </h1>
         {intro && (

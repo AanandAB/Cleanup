@@ -30,7 +30,7 @@ export async function LocationPageContent({ location }: { location: LocationPage
               return (
                 <SpotlightCard key={s.slug} className="flex h-full flex-col p-6">
                   <Icon className="h-6 w-6 text-brand" />
-                  <h3 className="mt-4 font-display text-lg font-bold text-navy">{s.name}</h3>
+                  <h3 className="mt-4 font-display text-lg font-bold text-heading">{s.name}</h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{s.short}</p>
                   <a
                     href={`/services/${s.slug}`}
@@ -47,7 +47,7 @@ export async function LocationPageContent({ location }: { location: LocationPage
       </section>
 
       {/* Coverage */}
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-surface py-16 md:py-20">
         <Container>
           <SectionHeading eyebrow="Coverage" title="Where We Work" align="left" />
           <div className="mt-8 flex flex-wrap gap-2.5">

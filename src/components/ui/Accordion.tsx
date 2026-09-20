@@ -14,7 +14,7 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
     <div className="divide-y divide-cool overflow-hidden rounded-3xl border border-cool bg-surface">
       {items.map((item, i) => (
         <details key={i} className="group">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 font-semibold text-navy transition-colors hover:text-brand [&::-webkit-details-marker]:hidden">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 font-semibold text-heading transition-colors hover:text-brand [&::-webkit-details-marker]:hidden">
             {item.q}
             <ChevronDown className="h-5 w-5 shrink-0 text-ink-muted transition-transform duration-300 group-open:rotate-180" />
           </summary>

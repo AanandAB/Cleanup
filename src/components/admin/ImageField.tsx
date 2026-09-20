@@ -74,7 +74,7 @@ export function ImageField({
 
   return (
     <div>
-      <span className="mb-1.5 block text-sm font-semibold text-navy">{label}</span>
+      <span className="mb-1.5 block text-sm font-semibold text-heading">{label}</span>
 
       <div className="mb-2 flex gap-1 rounded-lg bg-cool/60 p-1">
         <button

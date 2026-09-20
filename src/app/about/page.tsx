@@ -56,7 +56,7 @@ export default function AboutPage() {
             {whyUs.slice(0, 4).map((c) => (
               <SpotlightCard key={c.title} className="p-5">
                 <c.icon className="h-5 w-5 text-brand" />
-                <h3 className="mt-3 font-display text-base font-bold text-navy">{c.title}</h3>
+                <h3 className="mt-3 font-display text-base font-bold text-heading">{c.title}</h3>
                 <p className="mt-1 text-sm text-ink-muted">{c.desc}</p>
               </SpotlightCard>
             ))}

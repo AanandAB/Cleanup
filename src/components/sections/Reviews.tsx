@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
-import { defaultWaMessage, waLink } from "@/lib/site";
+import { siteConfig, waLink } from "@/lib/site";
 import type { ReviewsData } from "@/lib/reviews";
 
 function Stars({ rating }: { rating: number }) {
@@ -40,7 +40,7 @@ export function Reviews() {
   const hasReviews = !!data?.reviews && data.reviews.length > 0;
 
   return (
-    <section className="bg-white py-20 md:py-28">
+    <section className="bg-surface py-20 md:py-28">
       <Container>
         <Reveal>
           <SectionHeading
@@ -55,20 +55,27 @@ export function Reviews() {
         </Reveal>
 
         {hasReviews && data ? (
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {data.reviews.map((r, i) => (
-              <div key={i} className="flex flex-col rounded-3xl border border-cool bg-ice p-6">
-                <Stars rating={r.rating} />
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-ink">
-                  &ldquo;{r.text}&rdquo;
-                </p>
-                <div className="mt-5 flex items-center justify-between">
-                  <span className="text-sm font-semibold text-navy">{r.author}</span>
-                  <span className="text-xs text-ink-muted">{r.time}</span>
+          <>
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {data.reviews.map((r, i) => (
+                <div key={i} className="flex flex-col rounded-3xl border border-cool bg-ice p-6">
+                  <Stars rating={r.rating} />
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-ink">
+                    &ldquo;{r.text}&rdquo;
+                  </p>
+                  <div className="mt-5 flex items-center justify-between">
+                    <span className="text-sm font-semibold text-heading">{r.author}</span>
+                    <span className="text-xs text-ink-muted">{r.time}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Button href={siteConfig.reviewLink} external>
+                Write a review on Google
+              </Button>
+            </div>
+          </>
         ) : data === null ? (
           // loading skeleton
           <div className="mt-12 grid gap-6 md:grid-cols-3" aria-hidden="true">
@@ -84,7 +91,7 @@ export function Reviews() {
                   <Star key={i} className="h-5 w-5 fill-current" />
                 ))}
               </div>
-              <p className="mt-4 font-display text-lg font-bold text-navy">
+              <p className="mt-4 font-display text-lg font-bold text-heading">
                 Your review could be here
               </p>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">
@@ -93,6 +100,9 @@ export function Reviews() {
                 recent work.
               </p>
               <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+                <Button href={siteConfig.reviewLink} external>
+                  Write a Google Review
+                </Button>
                 <Button
                   href={waLink("Hi Clean UP, I'd like to see examples of your recent work.")}
                   external

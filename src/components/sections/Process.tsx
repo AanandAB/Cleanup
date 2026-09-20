@@ -27,7 +27,7 @@ export function Process() {
                 <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand to-electric font-display text-sm font-bold text-white shadow-lg shadow-brand/25">
                   {s.n}
                 </div>
-                <h3 className="mt-4 font-display text-base font-bold text-navy">{s.title}</h3>
+                <h3 className="mt-4 font-display text-base font-bold text-heading">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">{s.desc}</p>
               </div>
             </Reveal>

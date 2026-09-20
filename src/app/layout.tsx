@@ -3,6 +3,9 @@ import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import { localBusinessJsonLd, organizationJsonLd } from "@/lib/jsonld";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { LenisProvider } from "@/components/LenisProvider";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -71,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
+    <html lang="en" className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
       <body className="min-h-screen bg-ice font-sans text-ink antialiased">
         <script
           type="application/ld+json"
@@ -81,7 +84,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
         />
-        {children}
+        <ThemeProvider>
+          <LenisProvider>
+            <ScrollProgress />
+            {children}
+          </LenisProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

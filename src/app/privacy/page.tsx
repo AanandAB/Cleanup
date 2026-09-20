@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         Personal Data Protection Act, 2023 and the Information Technology Act, 2000.
       </p>
 
-      <h2 className="font-display text-lg font-bold text-navy">Information we collect</h2>
+      <h2 className="font-display text-lg font-bold text-heading">Information we collect</h2>
       <p>
         When you contact us or request an estimate, we collect the information you provide:
         your name, phone number, location, the service you&apos;re interested in, and any
@@ -24,39 +24,39 @@ export default function PrivacyPage() {
         request.
       </p>
 
-      <h2 className="font-display text-lg font-bold text-navy">How we use it</h2>
+      <h2 className="font-display text-lg font-bold text-heading">How we use it</h2>
       <ul className="list-disc space-y-1 pl-5">
         <li>To respond to your enquiry and provide estimates.</li>
         <li>To schedule site visits and deliver our cleaning services.</li>
         <li>To communicate with you about your request via phone or WhatsApp.</li>
       </ul>
 
-      <h2 className="font-display text-lg font-bold text-navy">Consent</h2>
+      <h2 className="font-display text-lg font-bold text-heading">Consent</h2>
       <p>
         By contacting us, you consent to us using the information you provide for the
         purposes above. You may withdraw consent at any time by contacting us.
       </p>
 
-      <h2 className="font-display text-lg font-bold text-navy">Sharing</h2>
+      <h2 className="font-display text-lg font-bold text-heading">Sharing</h2>
       <p>
         We do not sell your data. We share information only as needed to provide the
         service (for example, our team members who handle your job) and as required by
         law.
       </p>
 
-      <h2 className="font-display text-lg font-bold text-navy">Your rights</h2>
+      <h2 className="font-display text-lg font-bold text-heading">Your rights</h2>
       <p>
         You may request access to, correction of, or erasure of your personal information
         at any time. We will respond to such requests in line with applicable law.
       </p>
 
-      <h2 className="font-display text-lg font-bold text-navy">Retention</h2>
+      <h2 className="font-display text-lg font-bold text-heading">Retention</h2>
       <p>
         We keep enquiry information only as long as needed to respond and provide the
         service, after which it is deleted or anonymised.
       </p>
 
-      <h2 className="font-display text-lg font-bold text-navy">Contact</h2>
+      <h2 className="font-display text-lg font-bold text-heading">Contact</h2>
       <p>
         For privacy questions or requests, email {siteConfig.email} or contact us at{" "}
         {siteConfig.addressLine}.

@@ -32,14 +32,14 @@ export default function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-ice px-4">
       <div className="w-full max-w-sm">
         <div className="rounded-3xl border border-cool bg-surface p-8 shadow-sm">
-          <p className="font-display text-xl font-extrabold tracking-tight text-navy">
+          <p className="font-display text-xl font-extrabold tracking-tight text-heading">
             Clean <span className="text-brand">UP</span> Admin
           </p>
           <p className="mt-1 text-sm text-ink-muted">Sign in to manage your website.</p>
 
           <form onSubmit={onSubmit} className="mt-6 space-y-4">
             <div>
-              <label htmlFor="username" className="mb-1.5 block text-sm font-semibold text-navy">
+              <label htmlFor="username" className="mb-1.5 block text-sm font-semibold text-heading">
                 Username
               </label>
               <input
@@ -52,7 +52,7 @@ export default function LoginPage() {
               />
             </div>
             <div>
-              <label htmlFor="password" className="mb-1.5 block text-sm font-semibold text-navy">
+              <label htmlFor="password" className="mb-1.5 block text-sm font-semibold text-heading">
                 Password
               </label>
               <input

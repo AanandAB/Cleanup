@@ -14,7 +14,7 @@ export default async function GalleryPage() {
 
   return (
     <div className="max-w-3xl">
-      <h1 className="font-display text-2xl font-extrabold tracking-tight text-navy">
+      <h1 className="font-display text-2xl font-extrabold tracking-tight text-heading">
         Gallery &amp; Media
       </h1>
       <p className="mt-1 text-sm text-ink-muted">
@@ -23,15 +23,15 @@ export default async function GalleryPage() {
       </p>
 
       <form action={saveGalleryItem} className="mt-8 space-y-5 rounded-3xl border border-cool bg-surface p-6">
-        <h2 className="font-display text-base font-bold text-navy">Add a photo or video</h2>
+        <h2 className="font-display text-base font-bold text-heading">Add a photo or video</h2>
 
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="title" className="mb-1.5 block text-sm font-semibold text-navy">Title</label>
+            <label htmlFor="title" className="mb-1.5 block text-sm font-semibold text-heading">Title</label>
             <input id="title" name="title" placeholder="e.g. Interlock before & after" className={inputCls} />
           </div>
           <div>
-            <label htmlFor="kind" className="mb-1.5 block text-sm font-semibold text-navy">Type</label>
+            <label htmlFor="kind" className="mb-1.5 block text-sm font-semibold text-heading">Type</label>
             <select id="kind" name="kind" className={inputCls}>
               <option value="photo">Photo</option>
               <option value="video">Video</option>
@@ -58,7 +58,7 @@ export default async function GalleryPage() {
                 {g.kind === "video" ? <Film className="h-4.5 w-4.5" /> : <ImageIcon className="h-4.5 w-4.5" />}
               </span>
               <div className="min-w-0">
-                <p className="truncate font-semibold text-navy">{g.title ?? g.kind}</p>
+                <p className="truncate font-semibold text-heading">{g.title ?? g.kind}</p>
                 <p className="text-xs uppercase tracking-wide text-ink-muted">{g.kind}</p>
               </div>
             </div>

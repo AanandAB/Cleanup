@@ -33,7 +33,7 @@ export default function LocationsPage() {
           {locationPages.map((l) => (
             <SpotlightCard key={l.slug} className="flex h-full flex-col p-6">
               <MapPin className="h-6 w-6 text-brand" />
-              <h2 className="mt-4 font-display text-xl font-bold text-navy">{l.name}</h2>
+              <h2 className="mt-4 font-display text-xl font-bold text-heading">{l.name}</h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">{l.intro}</p>
               <Link
                 href={`/locations/${l.slug}`}

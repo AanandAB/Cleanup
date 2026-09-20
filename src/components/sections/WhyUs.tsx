@@ -7,7 +7,7 @@ import { stats, whyUs } from "@/content/home";
 
 export function WhyUs() {
   return (
-    <section className="bg-white py-20 md:py-28">
+    <section className="bg-surface py-20 md:py-28">
       <Container>
         <Reveal>
           <SectionHeading
@@ -37,7 +37,7 @@ export function WhyUs() {
             <Reveal key={c.title} delay={(i % 3) * 0.06} className="h-full">
               <SpotlightCard className="h-full p-6">
                 <c.icon className="h-6 w-6 text-brand" />
-                <h3 className="mt-4 font-display text-lg font-bold text-navy">{c.title}</h3>
+                <h3 className="mt-4 font-display text-lg font-bold text-heading">{c.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{c.desc}</p>
               </SpotlightCard>
             </Reveal>

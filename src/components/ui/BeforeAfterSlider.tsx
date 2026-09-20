@@ -69,7 +69,7 @@ export function BeforeAfterSlider({
       {/* divider + handle */}
       <div className="absolute inset-y-0" style={{ left: `${pos}%` }}>
         <div className="absolute inset-y-0 -translate-x-1/2 w-[2px] bg-white/90 shadow-md" />
-        <div className="absolute left-0 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/70 bg-white text-navy shadow-lg">
+        <div className="absolute left-0 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/70 bg-surface text-heading shadow-lg">
           <ChevronsLeftRight className="h-5 w-5" />
         </div>
       </div>

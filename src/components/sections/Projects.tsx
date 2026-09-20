@@ -30,7 +30,7 @@ export async function Projects() {
                   <MapPin className="h-3.5 w-3.5" />
                   {p.location}
                 </div>
-                <h3 className="mt-2 font-display text-lg font-bold text-navy">{p.title}</h3>
+                <h3 className="mt-2 font-display text-lg font-bold text-heading">{p.title}</h3>
                 <p className="mt-1 text-sm text-ink-muted">{p.type}</p>
                 <a
                   href={`/projects/${p.slug}`}

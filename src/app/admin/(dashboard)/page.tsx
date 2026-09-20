@@ -11,7 +11,7 @@ const cards = [
 export default function AdminHome() {
   return (
     <div>
-      <h1 className="font-display text-2xl font-extrabold tracking-tight text-navy">Dashboard</h1>
+      <h1 className="font-display text-2xl font-extrabold tracking-tight text-heading">Dashboard</h1>
       <p className="mt-1 text-sm text-ink-muted">
         Manage your Clean UP website content. Changes go live immediately.
       </p>
@@ -23,7 +23,7 @@ export default function AdminHome() {
             href={c.href}
             className="group rounded-2xl border border-cool bg-surface p-6 transition-all hover:border-brand/40 hover:shadow-sm"
           >
-            <h2 className="font-display text-lg font-bold text-navy">{c.title}</h2>
+            <h2 className="font-display text-lg font-bold text-heading">{c.title}</h2>
             <p className="mt-1 text-sm text-ink-muted">{c.desc}</p>
             <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand transition-all group-hover:gap-2">
               Manage <ArrowRight className="h-4 w-4" />

@@ -7,6 +7,7 @@ import { navItems, siteConfig, telLink } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 /**
  * Scroll-aware header: transparent at the top, then a compact
@@ -50,7 +51,7 @@ export function Header() {
             className="h-11 w-auto object-contain"
           />
           <span className="hidden leading-tight sm:block">
-            <span className="block font-display text-lg font-extrabold tracking-tight text-navy">
+            <span className="block font-display text-lg font-extrabold tracking-tight text-heading">
               CLEAN <span className="text-brand">UP</span>
             </span>
             <span className="block text-[11px] font-medium tracking-wide text-ink-muted">
@@ -74,9 +75,10 @@ export function Header() {
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-2 lg:flex">
+          <ThemeToggle />
           <a
             href={telLink()}
-            className="inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold text-navy transition-colors hover:text-brand"
+            className="inline-flex h-9 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold text-heading transition-colors hover:text-brand"
             aria-label="Call Clean UP"
           >
             <Phone className="h-4 w-4" />
@@ -88,15 +90,18 @@ export function Header() {
         </div>
 
         {/* Mobile toggle */}
-        <button
-          type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-navy transition-colors hover:bg-cool/60 lg:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-label={open ? "Close menu" : "Open menu"}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-1 lg:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-heading transition-colors hover:bg-cool/60"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </Container>
 
       {/* Mobile menu */}

@@ -46,7 +46,7 @@ export default async function ProjectDetailPage({
 
       <section className="py-16 md:py-20">
         <Container className="max-w-3xl">
-          <div className="rounded-3xl border border-cool bg-white p-8">
+          <div className="rounded-3xl border border-cool bg-surface p-8">
             <div className="flex items-center gap-2 text-sm font-semibold text-brand">
               <MapPin className="h-4 w-4" />
               {project.location} · {project.type}

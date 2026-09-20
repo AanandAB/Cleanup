@@ -66,7 +66,7 @@ export default async function GalleryPage() {
                     />
                   )}
                   {g.title && (
-                    <figcaption className="px-4 py-3 text-sm font-medium text-navy">
+                    <figcaption className="px-4 py-3 text-sm font-medium text-heading">
                       {g.title}
                     </figcaption>
                   )}

@@ -6,7 +6,7 @@ import { HeroScene } from "@/components/sections/HeroScene";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-ice to-ice pt-16 md:pt-20">
+    <section className="relative overflow-hidden bg-gradient-to-b from-surface via-ice to-ice pt-16 md:pt-20">
       <Container className="relative grid min-h-[calc(100svh-5rem)] items-center gap-12 py-14 md:grid-cols-2 md:py-20">
         {/* ── Copy ── */}
         <div>
@@ -15,7 +15,7 @@ export function Hero() {
             {siteConfig.tagline}
           </span>
 
-          <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-navy sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-heading sm:text-5xl lg:text-6xl">
             Professional Cleaning Services in{" "}
             <span className="bg-gradient-to-br from-brand via-electric to-brand-light bg-clip-text text-transparent">
               Kannur

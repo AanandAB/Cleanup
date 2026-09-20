@@ -30,7 +30,7 @@ export function TrustStrip() {
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand">
               <Icon className="h-4.5 w-4.5" />
             </span>
-            <span className="whitespace-nowrap text-sm font-semibold text-navy">
+            <span className="whitespace-nowrap text-sm font-semibold text-heading">
               {label}
             </span>
           </div>
