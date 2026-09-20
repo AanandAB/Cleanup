@@ -5,11 +5,7 @@
 // shapes here stable so the swap is a data-source change, not a
 // rewrite of every page.
 //
-// ⚠️  CONTACT PLACEHOLDERS — REPLACE BEFORE LAUNCH:
-// `phone` / `whatsapp` are obviously-fake placeholders. The
-// client has two real numbers (9074807315 and 7034026295) and
-// will confirm which is primary call vs WhatsApp before go-live.
-// `url` is also a placeholder domain (not yet purchased).
+// `url` is still a placeholder domain (not yet purchased).
 // ────────────────────────────────────────────────────────────
 
 export const siteConfig = {
@@ -19,9 +15,9 @@ export const siteConfig = {
   description:
     "Clean UP provides professional house deep cleaning, glass cleaning and interlock cleaning across Kannur and nearby areas. Free estimate and site visit.",
 
-  // ── Contact (placeholders — see note above) ──
-  phone: "910000000000", // primary call number (PLACEHOLDER)
-  whatsapp: "910000000000", // WhatsApp number (PLACEHOLDER)
+  // ── Contact ──
+  phone: "9074807315", // primary call number (10-digit national)
+  whatsapp: "918129321151", // WhatsApp number (international: 91 + 10-digit)
   email: "cleanupcleanit@gmail.com",
 
   address: {
@@ -64,9 +60,14 @@ export function waLink(message?: string): string {
   return `https://wa.me/${siteConfig.whatsapp}${text}`;
 }
 
-/** tel: link (assumes the stored number already carries the +91 prefix). */
+/** tel: link (national 10-digit number → +91 international). */
 export function telLink(): string {
-  return `tel:+${siteConfig.phone}`;
+  return `tel:+91${siteConfig.phone}`;
+}
+
+/** Full international phone number (for JSON-LD and display). */
+export function fullPhone(): string {
+  return `+91${siteConfig.phone}`;
 }
 
 /** Default WhatsApp greeting used across CTAs. */

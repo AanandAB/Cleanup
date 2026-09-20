@@ -31,7 +31,6 @@ export const servicePages: ServicePage[] = [
       "A thorough, top-to-bottom deep clean for homes, apartments and villas across Kannur — focused on the difficult areas a routine clean misses.",
     whatWeClean: [
       "Kitchen",
-      "Bathrooms",
       "Bedrooms",
       "Living room",
       "Windows",
@@ -43,7 +42,6 @@ export const servicePages: ServicePage[] = [
     included: [
       "Full surface dusting, top to bottom",
       "Kitchen deep clean — counters, sink and cabinet exteriors",
-      "Bathroom scrubbing, descaling and sanitising",
       "Floor sweeping, washing and mopping",
       "Window and glass cleaning",
       "Fan and light-fixture cleaning",

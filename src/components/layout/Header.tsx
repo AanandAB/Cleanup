@@ -42,11 +42,14 @@ export function Header() {
     >
       <Container className="flex h-16 items-center justify-between md:h-20">
         {/* Logo */}
-        <Link href="/" className="group flex items-center gap-2.5" aria-label={`${siteConfig.name} home`}>
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand via-electric to-brand-light text-white shadow-md shadow-brand/30 transition-transform duration-200 group-hover:scale-105">
-            <SparkleIcon />
-          </span>
-          <span className="leading-tight">
+        <Link href="/" className="flex items-center gap-3" aria-label={`${siteConfig.name} home`}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.jpeg"
+            alt={`${siteConfig.name} logo`}
+            className="h-11 w-auto object-contain"
+          />
+          <span className="hidden leading-tight sm:block">
             <span className="block font-display text-lg font-extrabold tracking-tight text-navy">
               CLEAN <span className="text-brand">UP</span>
             </span>
@@ -122,15 +125,5 @@ export function Header() {
         </div>
       )}
     </header>
-  );
-}
-
-/** Small sparkle mark for the logo. */
-function SparkleIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
-      <path d="M12 2l1.8 5.6L19.5 9l-5.7 1.4L12 16l-1.8-5.6L4.5 9l5.7-1.4L12 2z" />
-      <path d="M19 14l.9 2.6L22.5 17l-2.6.9L19 20l-.9-2.6L15.5 17l2.6-.9L19 14z" opacity="0.7" />
-    </svg>
   );
 }

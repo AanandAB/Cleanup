@@ -35,7 +35,7 @@ export const serviceDetails: ServiceDetail[] = [
     icon: Home,
     name: "House Deep Cleaning",
     short: "Thorough top-to-bottom cleaning for homes, apartments and villas.",
-    features: ["Kitchen & bathrooms", "Floors, fans & fixtures", "Windows & furniture"],
+    features: ["Kitchen deep clean", "Floors, fans & fixtures", "Windows & furniture"],
     href: "/services/house-deep-cleaning",
   },
   {
@@ -107,7 +107,7 @@ export const faqs = [
   },
   {
     q: "What does house deep cleaning include?",
-    a: "A full top-to-bottom clean: kitchens, bathrooms, bedrooms, living areas, floors, fans, fixtures, windows and furniture exteriors. We focus on the difficult areas a routine clean misses.",
+    a: "A full top-to-bottom clean: kitchens, bedrooms, living areas, floors, fans, fixtures, windows and furniture exteriors. We focus on the difficult areas a routine clean misses.",
   },
   {
     q: "Do you clean interlock tiles?",
