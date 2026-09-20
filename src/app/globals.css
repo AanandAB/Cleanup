@@ -63,3 +63,10 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Marquee (used by the trust strip / areas ticker). */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}

@@ -6,34 +6,26 @@ import * as THREE from "three";
 
 /* ────────────────────────────────────────────────────────────
    Clean UP hero scene — a stylized room split into a "before"
-   (dull) half and an "after" (clean, reflective) half. A branded
-   squeegee sweeps left → right as the user scrolls, revealing the
-   clean material. Mouse movement adds subtle camera parallax.
-   All WebGL is decorative — the hero copy stays normal HTML.
+   (dull) half and an "after" (clean, reflective) half.
+
+   On mount the scene plays ONE sweep (dirty → clean, ~2.5s),
+   then idles: the tool gently bobs, sparkles twinkle over the
+   clean area, and the camera parallaxes with the pointer.
+   No scroll dependency — WebGL stays purely decorative so the
+   hero copy remains plain, crawler-readable HTML.
    ──────────────────────────────────────────────────────────── */
 
-const WIDTH = 10; // room width in world units (x: -5..5)
+const WIDTH = 10; // x: -5..5
 const FRONT = -5;
+const SWEEP_SECONDS = 2.5;
 
-function useScrollProgress() {
-  const progress = useRef(0);
-  useEffect(() => {
-    const onScroll = () => {
-      // 0 at top → 1 after scrolling one viewport height.
-      const p = Math.min(1, Math.max(0, window.scrollY / window.innerHeight));
-      progress.current = p;
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return progress;
+function easeOutCubic(x: number) {
+  return 1 - Math.pow(1 - x, 3);
 }
 
-/** Sweep + material reveal, driven by smoothed scroll progress. */
+/** One-time dirty→clean sweep, then a gentle idle bob. */
 function Room() {
-  const progress = useScrollProgress();
-  const visual = useRef(0);
+  const elapsed = useRef(0);
 
   const squeegee = useRef<THREE.Group>(null);
   const cleanFloor = useRef<THREE.Mesh>(null);
@@ -44,14 +36,19 @@ function Room() {
   const cleanGlass = useRef(new THREE.Color("#bfe0ff"));
 
   useFrame((_, delta) => {
-    // Smooth toward the scroll target (no jumpy scrub).
-    visual.current += (progress.current - visual.current) * Math.min(1, delta * 5);
-    const t = visual.current;
-    const front = FRONT + WIDTH * t; // squeegee x position
+    elapsed.current += delta;
 
-    if (squeegee.current) squeegee.current.position.x = front;
+    // Intro sweep: 0 → 1 over SWEEP_SECONDS, then hold at 1.
+    const raw = Math.min(1, elapsed.current / SWEEP_SECONDS);
+    const t = easeOutCubic(raw);
+    const front = FRONT + WIDTH * t;
 
-    // Clean overlays grow from the left edge to follow the squeegee.
+    if (squeegee.current) {
+      squeegee.current.position.x = front;
+      // gentle idle bob once the sweep is done
+      squeegee.current.position.y = 0.9 + Math.sin(elapsed.current * 1.6) * 0.04;
+    }
+
     if (cleanFloor.current) {
       cleanFloor.current.scale.x = Math.max(0.0001, t);
       cleanFloor.current.position.x = FRONT + (WIDTH / 2) * t;
@@ -61,7 +58,6 @@ function Room() {
       cleanWall.current.position.x = FRONT + (WIDTH / 2) * t;
     }
 
-    // Window glass: grimy → clear.
     if (glassMat.current) {
       glassMat.current.color.lerpColors(dirtyGlass.current, cleanGlass.current, t);
       glassMat.current.opacity = 0.9 - 0.55 * t;
@@ -70,8 +66,8 @@ function Room() {
 
   return (
     <group>
-      {/* ── dirty room (base) ── */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
+      {/* dirty room (base) */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
         <planeGeometry args={[WIDTH, 7]} />
         <meshStandardMaterial color="#9aa0a8" roughness={1} />
       </mesh>
@@ -80,7 +76,7 @@ function Room() {
         <meshStandardMaterial color="#b3ab9d" roughness={1} />
       </mesh>
 
-      {/* ── clean overlays (revealed left → right) ── */}
+      {/* clean overlays (revealed left → right) */}
       <mesh ref={cleanFloor} rotation={[-Math.PI / 2, 0, 0]} position={[FRONT, 0.02, 0]} scale={[0.0001, 1, 1]}>
         <planeGeometry args={[WIDTH, 7]} />
         <meshStandardMaterial color="#eef2f7" roughness={0.18} metalness={0.25} />
@@ -90,7 +86,7 @@ function Room() {
         <meshStandardMaterial color="#f2f6fb" roughness={0.35} metalness={0.05} />
       </mesh>
 
-      {/* ── window (glass gets clearer as the sweep passes) ── */}
+      {/* window (glass clears as the sweep passes) */}
       <group position={[0, 2.15, -3.1]}>
         <mesh>
           <planeGeometry args={[2.6, 2.1]} />
@@ -109,19 +105,16 @@ function Room() {
         </mesh>
       </group>
 
-      {/* ── the cleaning tool (sweeps left → right) ── */}
+      {/* cleaning tool */}
       <group ref={squeegee} position={[FRONT, 0.9, 0.2]}>
-        {/* handle */}
         <mesh position={[0, 0.5, 0]}>
           <cylinderGeometry args={[0.06, 0.06, 1.2, 16]} />
           <meshStandardMaterial color="#3159c7" roughness={0.4} />
         </mesh>
-        {/* blade */}
         <mesh position={[0, -0.15, 0.35]} rotation={[0.6, 0, 0]}>
           <boxGeometry args={[0.9, 0.05, 0.55]} />
           <meshStandardMaterial color="#cfd8e6" roughness={0.2} metalness={0.7} />
         </mesh>
-        {/* scrub strip */}
         <mesh position={[0, -0.32, 0.15]}>
           <boxGeometry args={[0.9, 0.18, 0.12]} />
           <meshStandardMaterial color="#4774f6" roughness={0.5} />
@@ -131,7 +124,42 @@ function Room() {
   );
 }
 
-/** Subtle camera parallax that follows the pointer (desktop feel). */
+/** Tiny twinkling sparkles over the clean area. */
+function Sparkles({ count = 14 }: { count?: number }) {
+  const ref = useRef<THREE.Group>(null);
+  const seeds = useRef(
+    Array.from({ length: count }, () => ({
+      x: (Math.random() - 0.5) * 8,
+      y: 0.4 + Math.random() * 2.6,
+      z: -2.6 + Math.random() * 1.6,
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.6 + Math.random() * 1.4,
+      scale: 0.35 + Math.random() * 0.8,
+    })),
+  );
+
+  useFrame((state) => {
+    const t = state.clock.elapsedTime;
+    ref.current?.children.forEach((child, i) => {
+      const s = seeds.current[i];
+      const twinkle = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(t * s.speed + s.phase));
+      child.scale.setScalar(s.scale * twinkle);
+    });
+  });
+
+  return (
+    <group ref={ref}>
+      {seeds.current.map((s, i) => (
+        <mesh key={i} position={[s.x, s.y, s.z]}>
+          <sphereGeometry args={[0.05, 8, 8]} />
+          <meshBasicMaterial color="#cfe0ff" transparent opacity={0.9} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+/** Subtle camera parallax that follows the pointer. */
 function CameraRig() {
   const { camera } = useThree();
   const target = useRef({ x: 0, y: 0 });
@@ -160,13 +188,14 @@ export function CleaningScene() {
     <Canvas
       dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true }}
-      camera={{ position: [0, 1.4, 6.5], fov: 40 }}
+      camera={{ position: [0, 1.4, 6.5], fov:40 }}
       className="!absolute inset-0"
     >
       <ambientLight intensity={0.7} />
       <directionalLight position={[6, 8, 6]} intensity={1.1} />
       <pointLight position={[3, 3, 2]} intensity={0.5} color="#bfe0ff" />
       <Room />
+      <Sparkles />
       <CameraRig />
     </Canvas>
   );

@@ -6,7 +6,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-import { Container } from "@/components/ui/Container";
+import { Marquee } from "@/components/ui/Marquee";
 
 const items = [
   { icon: MapPin, label: "Free Site Visit" },
@@ -17,20 +17,25 @@ const items = [
   { icon: Users, label: "Kannur & Nearby" },
 ];
 
-/** Trust strip directly under the hero (spec §21). */
+/** Trust strip directly under the hero — an infinite marquee ticker. */
 export function TrustStrip() {
   return (
-    <section aria-label="Why choose Clean UP" className="border-y border-cool/70 bg-surface">
-      <Container className="grid grid-cols-2 gap-x-4 gap-y-5 py-7 sm:grid-cols-3 lg:grid-cols-6">
+    <section
+      aria-label="Why choose Clean UP"
+      className="border-y border-cool/70 bg-surface py-6"
+    >
+      <Marquee speed={28}>
         {items.map(({ icon: Icon, label }) => (
-          <div key={label} className="flex items-center gap-2.5">
+          <div key={label} className="mx-8 flex items-center gap-2.5">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand">
               <Icon className="h-4.5 w-4.5" />
             </span>
-            <span className="text-sm font-semibold text-navy">{label}</span>
+            <span className="whitespace-nowrap text-sm font-semibold text-navy">
+              {label}
+            </span>
           </div>
         ))}
-      </Container>
+      </Marquee>
     </section>
   );
 }

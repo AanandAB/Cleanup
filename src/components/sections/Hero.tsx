@@ -49,13 +49,6 @@ export function Hero() {
         {/* ── 3D scene ── */}
         <div className="relative h-[340px] overflow-hidden rounded-[32px] border border-cool/70 bg-gradient-to-br from-navy via-navy-deep to-brand/40 shadow-2xl shadow-navy/10 sm:h-[420px] md:h-[520px]">
           <HeroScene />
-          <div className="pointer-events-none absolute bottom-4 left-4 right-4 flex items-center justify-between text-[11px] font-medium tracking-wide text-white/70">
-            <span>BEFORE</span>
-            <span className="rounded-full bg-white/10 px-3 py-1 backdrop-blur-sm">
-              Scroll to sweep
-            </span>
-            <span>AFTER</span>
-          </div>
         </div>
       </Container>
     </section>
