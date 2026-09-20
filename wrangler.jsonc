@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cleanup-website",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2024-12-30",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": { "binding": "ASSETS", "directory": ".open-next/assets" }
+  // NOTE (Phase 6): add D1 (content) + R2 (photos/videos) bindings here
+  // when the CMS is wired up. R2 requires a payment method on file at Cloudflare.
+  // "d1_databases": [{ "binding": "DB", "database_name": "cleanup-db",
+  //   "database_id": "00000000-0000-0000-0000-000000000000", "migrations_dir": "drizzle/migrations" }]
+  // "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "cleanup-media" }]
+}
