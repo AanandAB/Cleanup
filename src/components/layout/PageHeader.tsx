@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 /** Sub-page hero: breadcrumb + H1 + optional intro. */
 export function PageHeader({
@@ -14,6 +15,10 @@ export function PageHeader({
 }) {
   return (
     <section className="border-b border-cool/70 bg-gradient-to-b from-white to-ice pb-12 pt-16 md:pb-16 md:pt-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }}
+      />
       <Container>
         <nav
           aria-label="Breadcrumb"

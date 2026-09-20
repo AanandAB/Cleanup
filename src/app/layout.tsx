@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
+import { localBusinessJsonLd, organizationJsonLd } from "@/lib/jsonld";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,7 +25,35 @@ export const metadata: Metadata = {
   description: siteConfig.seo.description,
   keywords: [...siteConfig.seo.keywords],
   authors: [{ name: siteConfig.name }],
-  // OG / Twitter / JSON-LD expanded in Phase 5.
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.seo.title,
+    description: siteConfig.seo.description,
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Clean UP — Professional Cleaning Services in Kannur",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.seo.title,
+    description: siteConfig.seo.description,
+    images: ["/og.png"],
+  },
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export const viewport: Viewport = {
@@ -42,6 +71,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <body className="min-h-screen bg-ice font-sans text-ink antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+        />
         {children}
       </body>
     </html>
