@@ -3,11 +3,9 @@ import { notFound } from "next/navigation";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { LocationPageContent } from "@/components/sections/LocationPageContent";
-import { getLocationPage, locationPages } from "@/content/locations";
+import { getLocationPage } from "@/content/locations";
 
-export function generateStaticParams() {
-  return locationPages.map((l) => ({ slug: l.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

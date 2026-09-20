@@ -6,7 +6,10 @@ import { Container } from "@/components/ui/Container";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { Button } from "@/components/ui/Button";
 import { CTA } from "@/components/sections/CTA";
-import { defaultWaMessage, siteConfig, telLink, waLink } from "@/lib/site";
+import { defaultWaMessage, siteConfig } from "@/lib/site";
+import { getPublicSettings } from "@/lib/queries";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: { absolute: "Contact Clean UP | Cleaning Services in Kannur" },
@@ -14,7 +17,17 @@ export const metadata: Metadata = {
     "Contact Clean UP for house deep cleaning, glass and interlock cleaning in Kannur. Call, WhatsApp or request a free estimate.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const s = await getPublicSettings();
+  const phone = s.phone || siteConfig.phone;
+  const whatsapp = s.whatsapp || siteConfig.whatsapp;
+  const email = s.email || siteConfig.email;
+  const addressLine = s.address_line || siteConfig.addressLine;
+  const hours = s.hours || siteConfig.hours;
+
+  const telHref = `tel:+91${phone}`;
+  const waHref = `https://wa.me/${whatsapp}?text=${encodeURIComponent(defaultWaMessage())}`;
+
   return (
     <SiteShell>
       <PageHeader
@@ -35,7 +48,7 @@ export default function ContactPage() {
                 <div>
                   <p className="font-display text-base font-bold text-navy">WhatsApp</p>
                   <p className="mt-0.5 text-sm text-ink-muted">Fastest — send us a message and we reply quickly.</p>
-                  <a href={waLink(defaultWaMessage())} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm font-semibold text-brand">
+                  <a href={waHref} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm font-semibold text-brand">
                     Chat on WhatsApp →
                   </a>
                 </div>
@@ -49,8 +62,8 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <p className="font-display text-base font-bold text-navy">Phone</p>
-                  <p className="mt-0.5 text-sm text-ink-muted">{siteConfig.hours}</p>
-                  <a href={telLink()} className="mt-2 inline-block text-sm font-semibold text-brand">
+                  <p className="mt-0.5 text-sm text-ink-muted">{hours}</p>
+                  <a href={telHref} className="mt-2 inline-block text-sm font-semibold text-brand">
                     Call now →
                   </a>
                 </div>
@@ -64,8 +77,8 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <p className="font-display text-base font-bold text-navy">Email</p>
-                  <a href={`mailto:${siteConfig.email}`} className="mt-0.5 block text-sm text-ink-muted transition-colors hover:text-brand">
-                    {siteConfig.email}
+                  <a href={`mailto:${email}`} className="mt-0.5 block text-sm text-ink-muted transition-colors hover:text-brand">
+                    {email}
                   </a>
                 </div>
               </div>
@@ -78,7 +91,7 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <p className="font-display text-base font-bold text-navy">Location</p>
-                  <p className="mt-0.5 text-sm text-ink-muted">{siteConfig.addressLine}</p>
+                  <p className="mt-0.5 text-sm text-ink-muted">{addressLine}</p>
                 </div>
               </div>
             </SpotlightCard>
@@ -90,7 +103,7 @@ export default function ContactPage() {
                 </span>
                 <div>
                   <p className="font-display text-base font-bold text-navy">Hours</p>
-                  <p className="mt-0.5 text-sm text-ink-muted">{siteConfig.hours}</p>
+                  <p className="mt-0.5 text-sm text-ink-muted">{hours}</p>
                 </div>
               </div>
             </SpotlightCard>
@@ -110,7 +123,7 @@ export default function ContactPage() {
                 Get a Free Estimate
               </Button>
               <Button
-                href={waLink(defaultWaMessage())}
+                href={waHref}
                 external
                 variant="outline"
                 size="lg"

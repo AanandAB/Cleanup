@@ -40,6 +40,9 @@ yarn-error.log*
 .wrangler/
 .open-next/
 
+# generated seed data
+seed.sql
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

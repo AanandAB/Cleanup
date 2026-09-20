@@ -3,9 +3,11 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { Reveal } from "@/components/ui/Reveal";
-import { projects } from "@/content/home";
+import { getPublicProjects } from "@/lib/queries";
 
-export function Projects() {
+export async function Projects() {
+  const projects = await getPublicProjects();
+
   return (
     <section className="py-20 md:py-28">
       <Container>

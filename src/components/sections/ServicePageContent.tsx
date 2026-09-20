@@ -4,10 +4,16 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Accordion } from "@/components/ui/Accordion";
 import { CTA } from "@/components/sections/CTA";
 import { processSteps } from "@/content/home";
-import type { ServicePage } from "@/content/services";
+
+interface ServiceContent {
+  name: string;
+  whatWeClean: string[];
+  included: string[];
+  faqs: { q: string; a: string }[];
+}
 
 /** Full body of a service detail page (shared across all services). */
-export function ServicePageContent({ service }: { service: ServicePage }) {
+export function ServicePageContent({ service }: { service: ServiceContent }) {
   return (
     <>
       {/* What we clean */}

@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
 import { getDb } from "@/lib/db";
-import { projects, services, settings } from "@/db/schema";
+import { gallery, projects, services, settings } from "@/db/schema";
 
 // ── FormData helpers ───────────────────────────────────────
 
@@ -116,4 +116,31 @@ export async function deleteProject(formData: FormData) {
   if (id) await db.delete(projects).where(eq(projects.id, id));
   revalidatePath("/admin/projects");
   redirect("/admin/projects");
+}
+
+// ── Gallery (photos via data-URL / videos via URL) ─────────
+
+export async function saveGalleryItem(formData: FormData) {
+  const db = getDb();
+  const id = str(formData, "id");
+  const data = {
+    title: str(formData, "title"),
+    kind: (str(formData, "kind") === "video" ? "video" : "photo") as "photo" | "video",
+    url: str(formData, "url"),
+  };
+  if (id) {
+    await db.update(gallery).set(data).where(eq(gallery.id, id));
+  } else {
+    await db.insert(gallery).values({ id: crypto.randomUUID(), ...data, sortOrder: 0 });
+  }
+  revalidatePath("/admin/gallery");
+  redirect("/admin/gallery");
+}
+
+export async function deleteGalleryItem(formData: FormData) {
+  const db = getDb();
+  const id = str(formData, "id");
+  if (id) await db.delete(gallery).where(eq(gallery.id, id));
+  revalidatePath("/admin/gallery");
+  redirect("/admin/gallery");
 }

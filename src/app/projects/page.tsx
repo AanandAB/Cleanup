@@ -6,7 +6,9 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Container } from "@/components/ui/Container";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { CTA } from "@/components/sections/CTA";
-import { projects } from "@/content/home";
+import { getPublicProjects } from "@/lib/queries";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: { absolute: "Recent Cleaning Projects in Kannur | Clean UP" },
@@ -14,7 +16,9 @@ export const metadata: Metadata = {
     "Recent cleaning projects by Clean UP — house deep cleaning, interlock pressure cleaning and glass cleaning across Kannur.",
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getPublicProjects();
+
   return (
     <SiteShell>
       <PageHeader

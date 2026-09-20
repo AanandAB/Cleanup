@@ -3,11 +3,9 @@ import { notFound } from "next/navigation";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { ServicePageContent } from "@/components/sections/ServicePageContent";
-import { getServicePage, servicePages } from "@/content/services";
+import { getPublicServiceBySlug } from "@/lib/queries";
 
-export function generateStaticParams() {
-  return servicePages.map((s) => ({ slug: s.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -15,9 +13,12 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const s = getServicePage(slug);
+  const s = await getPublicServiceBySlug(slug);
   if (!s) return {};
-  return { title: { absolute: s.seoTitle }, description: s.metaDescription };
+  return {
+    title: { absolute: `${s.name} in Kannur | Clean UP` },
+    description: s.short,
+  };
 }
 
 export default async function ServiceDetailPage({
@@ -26,8 +27,15 @@ export default async function ServiceDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const service = getServicePage(slug);
+  const service = await getPublicServiceBySlug(slug);
   if (!service) notFound();
+
+  const content = {
+    name: service.name,
+    whatWeClean: service.whatWeClean ?? [],
+    included: service.included ?? [],
+    faqs: service.faqs ?? [],
+  };
 
   return (
     <SiteShell>
@@ -37,10 +45,10 @@ export default async function ServiceDetailPage({
           { label: "Services", href: "/services" },
           { label: service.name },
         ]}
-        title={service.h1}
-        intro={service.heroDesc}
+        title={`${service.name} Services in Kannur`}
+        intro={service.short}
       />
-      <ServicePageContent service={service} />
+      <ServicePageContent service={content} />
     </SiteShell>
   );
 }

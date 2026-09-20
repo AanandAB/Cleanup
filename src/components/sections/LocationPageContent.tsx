@@ -4,13 +4,16 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Accordion } from "@/components/ui/Accordion";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { CTA } from "@/components/sections/CTA";
-import { serviceDetails } from "@/content/home";
+import { getPublicServices } from "@/lib/queries";
+import { iconForSlug } from "@/lib/service-icons";
 import { serviceAreas } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import type { LocationPage } from "@/content/locations";
 
 /** Full body of a location page (shared across all areas). */
-export function LocationPageContent({ location }: { location: LocationPage }) {
+export async function LocationPageContent({ location }: { location: LocationPage }) {
+  const services = await getPublicServices();
+
   return (
     <>
       {/* Services available here */}
@@ -22,20 +25,23 @@ export function LocationPageContent({ location }: { location: LocationPage }) {
             align="left"
           />
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {serviceDetails.map((s) => (
-              <SpotlightCard key={s.slug} className="flex h-full flex-col p-6">
-                <s.icon className="h-6 w-6 text-brand" />
-                <h3 className="mt-4 font-display text-lg font-bold text-navy">{s.name}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{s.short}</p>
-                <a
-                  href={s.href}
-                  className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-semibold text-brand transition-all hover:gap-2"
-                >
-                  Explore Service
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </SpotlightCard>
-            ))}
+            {services.map((s) => {
+              const Icon = iconForSlug(s.slug);
+              return (
+                <SpotlightCard key={s.slug} className="flex h-full flex-col p-6">
+                  <Icon className="h-6 w-6 text-brand" />
+                  <h3 className="mt-4 font-display text-lg font-bold text-navy">{s.name}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{s.short}</p>
+                  <a
+                    href={`/services/${s.slug}`}
+                    className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-semibold text-brand transition-all hover:gap-2"
+                  >
+                    Explore Service
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                </SpotlightCard>
+              );
+            })}
           </div>
         </Container>
       </section>
