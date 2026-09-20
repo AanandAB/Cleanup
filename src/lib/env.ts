@@ -11,7 +11,7 @@ export function getSecret(name: string): string | undefined {
 
   try {
     const ctx = getCloudflareContext();
-    const v = (ctx.env as Record<string, string | undefined>)[name];
+    const v = (ctx.env as unknown as Record<string, string | undefined>)[name];
     if (v) return v;
   } catch {
     // Not running in a Cloudflare request context (e.g. build time).

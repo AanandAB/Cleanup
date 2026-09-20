@@ -32,8 +32,8 @@ export function Reviews() {
 
   useEffect(() => {
     fetch("/api/reviews")
-      .then((r) => r.json())
-      .then((d: ReviewsData) => setData(d))
+      .then((r) => r.json() as Promise<ReviewsData>)
+      .then((d) => setData(d))
       .catch(() => setData(null));
   }, []);
 
