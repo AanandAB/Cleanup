@@ -4,7 +4,6 @@ import { StickyBar } from "@/components/layout/StickyBar";
 import { Hero } from "@/components/sections/Hero";
 import { TrustStrip } from "@/components/sections/TrustStrip";
 import { Services } from "@/components/sections/Services";
-import { BeforeAfter } from "@/components/sections/BeforeAfter";
 import { Process } from "@/components/sections/Process";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { Projects } from "@/components/sections/Projects";
@@ -21,7 +20,6 @@ export default function Home() {
         <Hero />
         <TrustStrip />
         <Services />
-        <BeforeAfter />
         <Process />
         <WhyUs />
         <Projects />
