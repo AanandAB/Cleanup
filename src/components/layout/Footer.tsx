@@ -106,7 +106,7 @@ export async function Footer() {
       </Container>
 
       <div className="border-t border-white/10">
-        <Container className="flex flex-col gap-3 py-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+        <Container className="flex flex-col gap-3 py-6 pb-24 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between md:pb-6">
           <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
           <nav className="flex flex-wrap gap-x-5 gap-y-2" aria-label="Legal">
             <Link href="/privacy" className="transition-colors hover:text-white">Privacy Policy</Link>

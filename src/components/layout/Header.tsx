@@ -106,7 +106,7 @@ export function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="border-t border-cool/70 bg-surface lg:hidden">
+        <div className="max-h-[calc(100svh-4rem)] overflow-y-auto border-t border-cool/70 bg-surface lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {navItems.map((item) => (
               <Link
