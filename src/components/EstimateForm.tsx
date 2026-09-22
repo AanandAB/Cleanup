@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { MessageCircle } from "lucide-react";
+import { Loader2, LocateFixed, MessageCircle } from "lucide-react";
 import { siteConfig, waLink } from "@/lib/site";
 import { serviceDetails } from "@/content/home";
 import { cn } from "@/lib/utils";
@@ -31,17 +31,72 @@ function FieldError({ msg }: { msg?: string }) {
   return <p className="mt-1 text-xs font-medium text-red-500">{msg}</p>;
 }
 
+/** Reverse-geocode a lat/lng to a readable "Locality, Region" string. */
+async function reverseGeocode(lat: number, lng: number): Promise<string> {
+  const res = await fetch(
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`,
+  );
+  if (!res.ok) throw new Error("geocode failed");
+  const data = (await res.json()) as {
+    locality?: string;
+    city?: string;
+    principalSubdivision?: string;
+  };
+  const locality = data.locality || data.city || "";
+  const region = data.principalSubdivision || "";
+  const addr = [locality, region].filter(Boolean).join(", ");
+  return addr;
+}
+
 /**
  * Free-estimate form → WhatsApp. Builds a prefilled message and opens
  * wa.me so the lead lands straight in the business's WhatsApp.
+ * The Location field supports both typing and "use my current location"
+ * (browser geolocation → reverse geocoded address + a maps pin link).
  */
 export function EstimateForm() {
   const [waUrl, setWaUrl] = useState<string | null>(null);
+  const [detecting, setDetecting] = useState(false);
+  const [locationError, setLocationError] = useState<string | null>(null);
+  const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(null);
+
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<FormValues>({ resolver: zodResolver(schema) });
+
+  async function useCurrentLocation() {
+    if (!("geolocation" in navigator)) {
+      setLocationError("Location isn't supported on this device — please type your area.");
+      return;
+    }
+    setDetecting(true);
+    setLocationError(null);
+
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const { latitude, longitude } = pos.coords;
+        let label = `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+        try {
+          label = (await reverseGeocode(latitude, longitude)) || label;
+        } catch {
+          // keep the coordinate fallback
+        }
+        setValue("location", label, { shouldValidate: true });
+        setCoords({ lat: latitude, lng: longitude });
+        setDetecting(false);
+      },
+      () => {
+        setDetecting(false);
+        setLocationError(
+          "Couldn't access your location — please allow location access or type your area.",
+        );
+      },
+      { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 },
+    );
+  }
 
   const onSubmit = (values: FormValues) => {
     const lines = [
@@ -51,6 +106,9 @@ export function EstimateForm() {
       `Location: ${values.location}`,
       `Service: ${values.service}`,
     ];
+    if (coords) {
+      lines.push(`📍 Location pin: https://maps.google.com/?q=${coords.lat},${coords.lng}`);
+    }
     if (values.message?.trim()) lines.push(`Details: ${values.message.trim()}`);
     const url = waLink(lines.join("\n"));
     setWaUrl(url);
@@ -122,15 +180,34 @@ export function EstimateForm() {
           <label htmlFor="location" className={labelCls}>
             Location
           </label>
-          <input
-            id="location"
-            type="text"
-            autoComplete="address-level2"
-            placeholder="e.g. Kuthuparamba"
-            className={inputCls}
-            {...register("location")}
-          />
+          <div className="relative">
+            <input
+              id="location"
+              type="text"
+              autoComplete="address-level2"
+              placeholder="e.g. Kuthuparamba"
+              className={cn(inputCls, "pr-12")}
+              {...register("location")}
+            />
+            <button
+              type="button"
+              onClick={useCurrentLocation}
+              disabled={detecting}
+              title="Use my current location"
+              aria-label="Use my current location"
+              className="absolute right-1.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-brand transition-colors hover:bg-brand/10 disabled:opacity-60"
+            >
+              {detecting ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <LocateFixed className="h-4 w-4" />
+              )}
+            </button>
+          </div>
           <FieldError msg={errors.location?.message} />
+          {locationError && (
+            <p className="mt-1 text-xs font-medium text-amber-600">{locationError}</p>
+          )}
         </div>
 
         <div>
