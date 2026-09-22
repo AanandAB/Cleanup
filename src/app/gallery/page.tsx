@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   title: { absolute: "Photo & Video Gallery | Clean UP" },
   description:
     "Photos and videos of Clean UP's cleaning work across Kannur — house deep cleaning, glass and interlock cleaning.",
+  keywords: [
+    "cleaning photos Kannur",
+    "cleaning videos Kannur",
+    "before after cleaning photos",
+    "cleaning gallery Kannur",
+  ],
 };
 
 function VideoEmbed({ url }: { url: string }) {

@@ -5,6 +5,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Privacy Policy | Clean UP" },
   description: "How Clean UP collects, uses and protects your personal information (DPDP Act 2023 compliant).",
+  robots: { index: false, follow: true },
 };
 
 export default function PrivacyPage() {

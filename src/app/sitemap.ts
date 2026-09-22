@@ -13,9 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/contact",
     "/get-estimate",
-    "/privacy",
-    "/terms",
-    "/refund",
+    "/gallery",
   ];
   const servicePaths = servicePages.map((s) => `/services/${s.slug}`);
   const locationPaths = locationPages.map((l) => `/locations/${l.slug}`);

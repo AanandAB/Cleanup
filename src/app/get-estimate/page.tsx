@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: { absolute: "Get a Free Estimate | Clean UP" },
   description:
     "Request a free cleaning estimate from Clean UP. House deep cleaning, glass and interlock cleaning across Kannur — free site visit.",
+  keywords: [
+    "free cleaning estimate",
+    "cleaning quote Kannur",
+    "free site visit cleaning",
+    "cleaning price Kannur",
+  ],
 };
 
 export default function GetEstimatePage() {

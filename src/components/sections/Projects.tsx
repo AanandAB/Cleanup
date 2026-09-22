@@ -23,8 +23,19 @@ export async function Projects() {
           {projects.map((p, i) => (
             <Reveal key={p.slug} delay={i * 0.08} className="h-full">
               <SpotlightCard className="flex h-full flex-col p-6">
-                <div className="flex h-24 items-center justify-center rounded-2xl bg-gradient-to-br from-navy via-navy-deep to-brand/50 text-white">
-                  <Sparkles className="h-8 w-8 opacity-80" />
+                <div className="relative aspect-video overflow-hidden rounded-2xl bg-gradient-to-br from-navy via-navy-deep to-brand/50">
+                  {p.afterImage || p.beforeImage ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={p.afterImage || p.beforeImage || undefined}
+                      alt={p.title}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center text-white">
+                      <Sparkles className="h-8 w-8 opacity-80" />
+                    </div>
+                  )}
                 </div>
                 <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-brand">
                   <MapPin className="h-3.5 w-3.5" />

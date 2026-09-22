@@ -14,6 +14,12 @@ export const metadata: Metadata = {
   title: { absolute: "Recent Cleaning Projects in Kannur | Clean UP" },
   description:
     "Recent cleaning projects by Clean UP — house deep cleaning, interlock pressure cleaning and glass cleaning across Kannur.",
+  keywords: [
+    "cleaning projects Kannur",
+    "cleaning work Kannur",
+    "before after cleaning Kannur",
+    "cleaning company portfolio",
+  ],
 };
 
 export default async function ProjectsPage() {

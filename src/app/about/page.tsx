@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   title: { absolute: "About Clean UP | Cleaning Company in Kannur" },
   description:
     "Clean UP is a professional cleaning company based around Kuthuparamba, serving Kannur and nearby areas with house deep cleaning, glass and interlock cleaning.",
+  keywords: [
+    "cleaning company Kannur",
+    "professional cleaning company Kannur",
+    "cleaning services Kuthuparamba",
+    "about Clean UP",
+  ],
 };
 
 export default function AboutPage() {

@@ -5,6 +5,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Terms of Use | Clean UP" },
   description: "Terms of use for the Clean UP website and cleaning services.",
+  robots: { index: false, follow: true },
 };
 
 export default function TermsPage() {

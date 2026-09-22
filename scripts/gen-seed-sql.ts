@@ -48,8 +48,8 @@ for (const s of servicePages) {
 
 for (const p of projects) {
   sql +=
-    `INSERT INTO projects (id, slug, title, location, type, description, sort_order, updated_at) ` +
-    `VALUES (${q(randomUUID())}, ${q(p.slug)}, ${q(p.title)}, ${q(p.location)}, ${q(p.type)}, NULL, 0, unixepoch());\n`;
+    `INSERT INTO projects (id, slug, title, location, type, description, before_image, after_image, sort_order, updated_at) ` +
+    `VALUES (${q(randomUUID())}, ${q(p.slug)}, ${q(p.title)}, ${q(p.location)}, ${q(p.type)}, ${q(p.description)}, ${q(p.beforeImage)}, ${q(p.afterImage)}, 0, unixepoch());\n`;
 }
 
 for (const g of gallery) {

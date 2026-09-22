@@ -14,6 +14,13 @@ export const metadata: Metadata = {
   title: { absolute: "Cleaning Services in Kannur | Clean UP" },
   description:
     "House deep cleaning, glass cleaning and interlock cleaning across Kannur from Clean UP. Free estimate and site visit available.",
+  keywords: [
+    "cleaning services Kannur",
+    "house deep cleaning Kannur",
+    "glass cleaning Kannur",
+    "interlock cleaning Kannur",
+    "home cleaning Kannur",
+  ],
 };
 
 export default async function ServicesPage() {

@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   title: { absolute: "Cleaning Service Areas in Kannur | Clean UP" },
   description:
     "Clean UP provides cleaning services across Kannur, Kuthuparamba, Thalassery and nearby areas. Free estimate and site visit.",
+  keywords: [
+    "cleaning service areas Kannur",
+    "cleaning services Kuthuparamba",
+    "cleaning services Thalassery",
+    "cleaning services Mattannur",
+  ],
 };
 
 export default function LocationsPage() {

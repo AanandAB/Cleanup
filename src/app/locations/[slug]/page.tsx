@@ -15,7 +15,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const l = getLocationPage(slug);
   if (!l) return {};
-  return { title: { absolute: l.seoTitle }, description: l.metaDescription };
+  return {
+    title: { absolute: l.seoTitle },
+    description: l.metaDescription,
+    keywords: [
+      `cleaning services ${l.name}`,
+      `house cleaning ${l.name}`,
+      `home cleaning ${l.name}`,
+      `cleaning company ${l.name}`,
+    ],
+  };
 }
 
 export default async function LocationDetailPage({

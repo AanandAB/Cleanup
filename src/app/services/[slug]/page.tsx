@@ -18,6 +18,12 @@ export async function generateMetadata({
   return {
     title: { absolute: `${s.name} in Kannur | Clean UP` },
     description: s.short,
+    keywords: [
+      `${s.name} Kannur`,
+      `${s.name} Kuthuparamba`,
+      `${s.name} Thalassery`,
+      "cleaning services Kannur",
+    ],
   };
 }
 

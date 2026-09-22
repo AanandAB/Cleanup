@@ -44,9 +44,18 @@ export const siteConfig = {
       "Clean UP provides professional house deep cleaning, glass cleaning and interlock cleaning across Kannur and nearby areas. Free estimate and site visit.",
     keywords: [
       "cleaning services Kannur",
+      "cleaning services in Kannur",
+      "cleaning company Kannur",
+      "professional cleaning Kannur",
+      "home cleaning Kannur",
       "house deep cleaning Kannur",
       "glass cleaning Kannur",
       "interlock cleaning Kannur",
+      "cleaning services Kuthuparamba",
+      "cleaning services Thalassery",
+      "cleaning services Mattannur",
+      "commercial cleaning Kannur",
+      "cleaning services near me",
     ],
   },
 } as const;

@@ -5,6 +5,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Refund & Cancellation Policy | Clean UP" },
   description: "Refund and cancellation policy for Clean UP cleaning services.",
+  robots: { index: false, follow: true },
 };
 
 export default function RefundPage() {

@@ -20,6 +20,12 @@ export async function generateMetadata({
   return {
     title: { absolute: `${p.title} in ${p.location} | Clean UP` },
     description: `${p.type} project completed by Clean UP in ${p.location}, Kannur.`,
+    keywords: [
+      `${p.type} ${p.location}`,
+      `cleaning ${p.location}`,
+      `${p.title} cleaning`,
+      "cleaning projects Kannur",
+    ],
   };
 }
 

@@ -86,14 +86,40 @@ export interface Project {
   title: string;
   location: string;
   type: string;
+  description: string;
+  beforeImage?: string;
+  afterImage?: string;
 }
 
-// Placeholder example projects (from the spec's suggested slugs) —
-// replace with real completed jobs + photos via the CMS.
+// Real completed works (photos are placeholders — replace via the CMS).
 export const projects: Project[] = [
-  { slug: "3bhk-deep-cleaning-kuthuparamba", title: "3 BHK Deep Cleaning", location: "Kuthuparamba", type: "House Deep Cleaning" },
-  { slug: "interlock-pressure-cleaning-kannur", title: "Interlock Pressure Cleaning", location: "Kannur", type: "Interlock Cleaning" },
-  { slug: "office-glass-cleaning-thalassery", title: "Office Glass Cleaning", location: "Thalassery", type: "Glass Cleaning" },
+  {
+    slug: "namasco-commercial-cleaning-kuthuparamba",
+    title: "NaMazco",
+    location: "Kuthuparamba",
+    type: "Commercial Cleaning",
+    description: "Commercial cleaning for the NaMazco premises in Kuthuparamba, Kannur.",
+    beforeImage: "https://picsum.photos/seed/namasco-before/800/600",
+    afterImage: "https://picsum.photos/seed/namasco-after/800/600",
+  },
+  {
+    slug: "mattanur-eye-hospital-cleaning",
+    title: "Mattanur Eye Hospital",
+    location: "Mattannur",
+    type: "Commercial Cleaning",
+    description: "Commercial cleaning for Mattanur Eye Hospital, Mattannur.",
+    beforeImage: "https://picsum.photos/seed/hospital-before/800/600",
+    afterImage: "https://picsum.photos/seed/hospital-after/800/600",
+  },
+  {
+    slug: "mc-enclave-apartment-cleaning-thalassery",
+    title: "MC Enclave",
+    location: "Thalassery",
+    type: "Apartment Complex Cleaning",
+    description: "Cleaning of common areas and exteriors at MC Enclave, Thalassery.",
+    beforeImage: "https://picsum.photos/seed/mc-enclave-before/800/600",
+    afterImage: "https://picsum.photos/seed/mc-enclave-after/800/600",
+  },
 ];
 
 export const faqs = [

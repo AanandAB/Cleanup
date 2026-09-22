@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getProjectByIdAdmin, listProjectsAdmin } from "@/lib/admin";
 import { deleteProject, saveProject } from "@/app/admin/actions";
+import { ImageField } from "@/components/admin/ImageField";
 
 export const dynamic = "force-dynamic";
 
@@ -57,14 +58,18 @@ export default async function ProjectsPage({
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">
-          <div>
-            <label htmlFor="beforeImage" className="mb-1.5 block text-sm font-semibold text-heading">Before image URL</label>
-            <input id="beforeImage" name="beforeImage" defaultValue={editing?.beforeImage ?? ""} placeholder="https://… or /media/…" className={inputCls} />
-          </div>
-          <div>
-            <label htmlFor="afterImage" className="mb-1.5 block text-sm font-semibold text-heading">After image URL</label>
-            <input id="afterImage" name="afterImage" defaultValue={editing?.afterImage ?? ""} placeholder="https://… or /media/…" className={inputCls} />
-          </div>
+          <ImageField
+            name="beforeImage"
+            label="Before image"
+            defaultValue={editing?.beforeImage ?? ""}
+            hint="Upload a photo (compressed in-browser) or paste a URL."
+          />
+          <ImageField
+            name="afterImage"
+            label="After image"
+            defaultValue={editing?.afterImage ?? ""}
+            hint="Upload a photo (compressed in-browser) or paste a URL."
+          />
         </div>
 
         <div className="flex gap-3">
