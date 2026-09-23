@@ -77,6 +77,8 @@ export default async function ProjectDetailPage({
                     key={i}
                     src={src}
                     alt={`${project.title} — photo ${i + 1}`}
+                    loading="lazy"
+                    decoding="async"
                     className="aspect-video w-full rounded-xl border border-cool object-cover"
                   />
                 ))}
