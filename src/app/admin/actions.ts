@@ -92,14 +92,20 @@ export async function deleteService(formData: FormData) {
 export async function saveProject(formData: FormData) {
   const db = getDb();
   const id = str(formData, "id");
+  let images: string[] = [];
+  try {
+    const raw = JSON.parse(str(formData, "images") ?? "[]") as unknown[];
+    images = raw.filter((v): v is string => typeof v === "string" && v.trim() !== "");
+  } catch {
+    images = [];
+  }
   const data = {
     title: str(formData, "title") ?? "",
     slug: str(formData, "slug") ?? "",
     location: str(formData, "location") ?? "",
     type: str(formData, "type") ?? "",
     description: str(formData, "description"),
-    beforeImage: str(formData, "beforeImage"),
-    afterImage: str(formData, "afterImage"),
+    images,
   };
   if (id) {
     await db.update(projects).set(data).where(eq(projects.id, id));

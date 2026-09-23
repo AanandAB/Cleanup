@@ -46,11 +46,13 @@ export function ImageField({
   label,
   defaultValue = "",
   hint,
+  onChange,
 }: {
-  name: string;
+  name?: string;
   label: string;
   defaultValue?: string;
   hint?: string;
+  onChange?: (value: string) => void;
 }) {
   const [mode, setMode] = useState<"url" | "upload">(
     defaultValue.startsWith("data:") ? "upload" : "url",
@@ -59,12 +61,17 @@ export function ImageField({
   const [busy, setBusy] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
+  function update(v: string) {
+    setValue(v);
+    onChange?.(v);
+  }
+
   async function onFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
     setBusy(true);
     try {
-      setValue(await compressImage(file, 1400, 0.82));
+      update(await compressImage(file, 1400, 0.82));
     } catch {
       // leave value unchanged on failure
     } finally {
@@ -103,7 +110,7 @@ export function ImageField({
         <input
           type="text"
           value={value.startsWith("data:") ? "" : value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => update(e.target.value)}
           placeholder="https://…"
           className={inputCls}
         />
@@ -126,7 +133,7 @@ export function ImageField({
           {value && (
             <button
               type="button"
-              onClick={() => setValue("")}
+              onClick={() => update("")}
               aria-label="Remove image"
               className="text-ink-muted transition-colors hover:text-red-500"
             >
@@ -147,7 +154,7 @@ export function ImageField({
 
       {hint && <p className="mt-1 text-xs text-ink-muted">{hint}</p>}
 
-      <input type="hidden" name={name} value={value} />
+      {name && <input type="hidden" name={name} value={value} />}
     </div>
   );
 }

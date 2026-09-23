@@ -87,8 +87,7 @@ export interface Project {
   location: string;
   type: string;
   description: string;
-  beforeImage?: string;
-  afterImage?: string;
+  images: string[];
 }
 
 // Real completed works (photos are placeholders — replace via the CMS).
@@ -99,8 +98,11 @@ export const projects: Project[] = [
     location: "Kuthuparamba",
     type: "Commercial Cleaning",
     description: "Commercial cleaning for the NaMazco premises in Kuthuparamba, Kannur.",
-    beforeImage: "https://picsum.photos/seed/namasco-before/800/600",
-    afterImage: "https://picsum.photos/seed/namasco-after/800/600",
+    images: [
+      "https://picsum.photos/seed/namasco-1/800/600",
+      "https://picsum.photos/seed/namasco-2/800/600",
+      "https://picsum.photos/seed/namasco-3/800/600",
+    ],
   },
   {
     slug: "mattanur-eye-hospital-cleaning",
@@ -108,8 +110,10 @@ export const projects: Project[] = [
     location: "Mattannur",
     type: "Commercial Cleaning",
     description: "Commercial cleaning for Mattanur Eye Hospital, Mattannur.",
-    beforeImage: "https://picsum.photos/seed/hospital-before/800/600",
-    afterImage: "https://picsum.photos/seed/hospital-after/800/600",
+    images: [
+      "https://picsum.photos/seed/hospital-1/800/600",
+      "https://picsum.photos/seed/hospital-2/800/600",
+    ],
   },
   {
     slug: "mc-enclave-apartment-cleaning-thalassery",
@@ -117,8 +121,11 @@ export const projects: Project[] = [
     location: "Thalassery",
     type: "Apartment Complex Cleaning",
     description: "Cleaning of common areas and exteriors at MC Enclave, Thalassery.",
-    beforeImage: "https://picsum.photos/seed/mc-enclave-before/800/600",
-    afterImage: "https://picsum.photos/seed/mc-enclave-after/800/600",
+    images: [
+      "https://picsum.photos/seed/mc-enclave-1/800/600",
+      "https://picsum.photos/seed/mc-enclave-2/800/600",
+      "https://picsum.photos/seed/mc-enclave-3/800/600",
+    ],
   },
 ];
 

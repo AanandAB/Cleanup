@@ -45,8 +45,7 @@ export const projects = sqliteTable("projects", {
   location: text("location").notNull(),
   type: text("type").notNull(),
   description: text("description"),
-  beforeImage: text("before_image"),
-  afterImage: text("after_image"),
+  images: text("images", { mode: "json" }).$type<string[]>(),
   sortOrder: integer("sort_order").notNull().default(0),
   updatedAt: integer("updated_at", { mode: "timestamp" })
     .notNull()

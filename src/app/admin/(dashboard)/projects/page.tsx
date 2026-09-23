@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getProjectByIdAdmin, listProjectsAdmin } from "@/lib/admin";
 import { deleteProject, saveProject } from "@/app/admin/actions";
-import { ImageField } from "@/components/admin/ImageField";
+import { ProjectImagesField } from "@/components/admin/ProjectImagesField";
 
 export const dynamic = "force-dynamic";
 
@@ -57,20 +57,7 @@ export default async function ProjectsPage({
           <textarea id="description" name="description" rows={4} defaultValue={editing?.description ?? ""} className={inputCls} />
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          <ImageField
-            name="beforeImage"
-            label="Before image"
-            defaultValue={editing?.beforeImage ?? ""}
-            hint="Upload a photo (compressed in-browser) or paste a URL."
-          />
-          <ImageField
-            name="afterImage"
-            label="After image"
-            defaultValue={editing?.afterImage ?? ""}
-            hint="Upload a photo (compressed in-browser) or paste a URL."
-          />
-        </div>
+        <ProjectImagesField defaultValue={editing?.images ?? []} />
 
         <div className="flex gap-3">
           <button type="submit" className="rounded-xl bg-gradient-to-br from-brand via-electric to-brand-light px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/25 transition hover:brightness-105">

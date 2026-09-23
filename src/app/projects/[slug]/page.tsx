@@ -69,24 +69,17 @@ export default async function ProjectDetailPage({
               </p>
             )}
 
-            {(project.beforeImage || project.afterImage) && (
+            {project.images && project.images.length > 0 && (
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {project.beforeImage && (
+                {project.images.map((src, i) => (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={project.beforeImage}
-                    alt={`${project.title} — before`}
+                    key={i}
+                    src={src}
+                    alt={`${project.title} — photo ${i + 1}`}
                     className="aspect-video w-full rounded-xl border border-cool object-cover"
                   />
-                )}
-                {project.afterImage && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={project.afterImage}
-                    alt={`${project.title} — after`}
-                    className="aspect-video w-full rounded-xl border border-cool object-cover"
-                  />
-                )}
+                ))}
               </div>
             )}
           </div>

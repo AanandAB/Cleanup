@@ -15,7 +15,7 @@ export async function Projects() {
           <SectionHeading
             eyebrow="Recent Work"
             title="Recent Clean UP Transformations"
-            subtitle="A sample of the kind of jobs we take on. Full case studies with before/after photos coming soon."
+            subtitle="A sample of the kind of jobs we take on across Kannur — homes, offices and commercial spaces."
           />
         </Reveal>
 
@@ -24,10 +24,10 @@ export async function Projects() {
             <Reveal key={p.slug} delay={i * 0.08} className="h-full">
               <SpotlightCard className="flex h-full flex-col p-6">
                 <div className="relative aspect-video overflow-hidden rounded-2xl bg-gradient-to-br from-navy via-navy-deep to-brand/50">
-                  {p.afterImage || p.beforeImage ? (
+                  {p.images && p.images.length > 0 ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      src={p.afterImage || p.beforeImage || undefined}
+                      src={p.images[0]}
                       alt={p.title}
                       className="h-full w-full object-cover"
                     />
