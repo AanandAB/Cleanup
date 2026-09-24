@@ -19,7 +19,10 @@ const nextKey = () =>
 export function ProjectImagesField({ defaultValue = [] }: { defaultValue?: string[] }) {
   const [entries, setEntries] = useState<Entry[]>(() => {
     const base = defaultValue.length ? defaultValue : [""];
-    return base.map((value) => ({ key: nextKey(), value }));
+    // Deterministic seed keys — stable across SSR + hydration (random keys
+    // here would differ server vs client and break hydration). New entries
+    // added at runtime get unique keys from nextKey().
+    return base.map((value, i) => ({ key: `seed-${i}`, value }));
   });
 
   function setValue(key: string, value: string) {
