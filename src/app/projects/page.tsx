@@ -30,15 +30,28 @@ export default async function ProjectsPage() {
       <PageHeader
         crumbs={[{ label: "Home", href: "/" }, { label: "Projects" }]}
         title="Recent Work"
-        intro="A sample of the kind of jobs we take on across Kannur. Full case studies with before/after photos coming soon."
+        intro="A sample of the kind of jobs we take on across Kannur — homes, offices and commercial spaces."
       />
 
       <section className="py-16 md:py-20">
         <Container className="grid gap-6 md:grid-cols-3">
           {projects.map((p) => (
             <SpotlightCard key={p.slug} className="flex h-full flex-col p-6">
-              <div className="flex h-24 items-center justify-center rounded-2xl bg-gradient-to-br from-navy via-navy-deep to-brand/50 text-white">
-                <Sparkles className="h-8 w-8 opacity-80" />
+              <div className="relative aspect-video overflow-hidden rounded-2xl bg-gradient-to-br from-navy via-navy-deep to-brand/50">
+                {p.images && p.images.length > 0 ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={p.images[0]}
+                    alt={p.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="flex h-full items-center justify-center text-white">
+                    <Sparkles className="h-8 w-8 opacity-80" />
+                  </div>
+                )}
               </div>
               <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-brand">
                 <MapPin className="h-3.5 w-3.5" />
