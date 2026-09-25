@@ -71,7 +71,10 @@ export function ImageField({
     if (!file) return;
     setBusy(true);
     try {
-      update(await compressImage(file, 1400, 0.82));
+      // Resize to max 1000px @ 0.75 JPEG before storing as a base64 data URL.
+      // Kept small on purpose: images live in D1 (Cloudflare free tier), so a
+      // smaller image = less storage + fewer read/write bytes.
+      update(await compressImage(file, 1000, 0.75));
     } catch {
       // leave value unchanged on failure
     } finally {
