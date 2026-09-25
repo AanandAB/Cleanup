@@ -1,0 +1,1 @@
+INSERT INTO admins (id, username, password_hash, role, created_at) VALUES ('e89c9186-2125-437b-9665-04666d7f7779', 'admin', 'pbkdf2$100000$4NY4RvTOkQOpGnHarSPk3w$Atp7_L_zWb0Yy5COxOtDEca76eA-jO6PefamlrosP6k', 'admin', unixepoch());

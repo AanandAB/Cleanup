@@ -4,12 +4,13 @@
   "main": ".open-next/worker.js",
   "compatibility_date": "2024-12-30",
   "compatibility_flags": ["nodejs_compat"],
+  "account_id": "b2875133dba10738a57ffbe3d2c8aef4",
   "assets": { "binding": "ASSETS", "directory": ".open-next/assets" },
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "cleanup-db",
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "751f51a4-0b23-4f13-812b-123b5e657ad5",
       "migrations_dir": "drizzle/migrations"
     }
   ]

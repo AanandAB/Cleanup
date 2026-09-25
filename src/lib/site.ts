@@ -29,7 +29,7 @@ export const siteConfig = {
   },
   addressLine: "Kuthuparamba, Kannur, Kerala",
 
-  url: "https://cleanup.example.com", // PLACEHOLDER — replace with real domain
+  url: "https://cleanup-website.cleanupservicein.workers.dev", // TEMP workers.dev — set to the custom domain when it's added
   hours: "Mon – Sat · 8:00 AM – 7:00 PM",
   reviewLink: "https://share.google/s6hP4IaQ3qzuZgb5W", // Google Business review link
 
