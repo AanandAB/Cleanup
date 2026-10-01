@@ -18,7 +18,9 @@ export function NumberTicker({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [display, setDisplay] = useState(0);
+  // Start at the FINAL value so SSR + crawlers (Google) see the real number;
+  // the count-up only happens client-side when the element scrolls into view.
+  const [display, setDisplay] = useState(value);
   const started = useRef(false);
 
   useEffect(() => {
