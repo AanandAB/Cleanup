@@ -32,7 +32,7 @@ export function Hero() {
         </span>
 
         <h1 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-heading sm:text-5xl lg:text-6xl">
-          Professional Cleaning Services in{" "}
+          Best Cleaning Service in{" "}
           <span className="bg-gradient-to-br from-brand via-electric to-brand-light bg-clip-text text-transparent">
             Kannur
           </span>

@@ -1,4 +1,5 @@
-import { serviceAreas, siteConfig } from "@/lib/site";
+import { serviceAreas, services, siteConfig } from "@/lib/site";
+import { faqs } from "@/content/home";
 
 // Structured data (JSON-LD) for Google. Structured data must match the
 // visible on-page content — no fake ratings/reviews/prices (spec §56).
@@ -51,6 +52,39 @@ export function organizationJsonLd() {
       availableLanguage: ["en"],
     },
     sameAs: [siteConfig.social.instagram, siteConfig.social.facebook],
+  };
+}
+
+/** Service list (ItemList) — helps search engines + AI engines understand the services. */
+export function serviceListJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: services.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Service",
+        name: s.name,
+        url: `${siteConfig.url}${s.href}`,
+        description: s.short,
+        areaServed: "Kannur",
+        provider: { "@type": "LocalBusiness", name: siteConfig.name },
+      },
+    })),
+  };
+}
+
+/** FAQPage — enables FAQ rich results in search + AI overviews. */
+export function faqPageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   };
 }
 

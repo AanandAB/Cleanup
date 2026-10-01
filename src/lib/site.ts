@@ -29,7 +29,7 @@ export const siteConfig = {
   },
   addressLine: "Kuthuparamba, Kannur, Kerala",
 
-  url: "https://cleanup-website.cleanupservicein.workers.dev", // TEMP workers.dev — set to the custom domain when it's added
+  url: "https://allcleaningservice.in",
   hours: "Mon – Sat · 8:00 AM – 7:00 PM",
   reviewLink: "https://share.google/s6hP4IaQ3qzuZgb5W", // Google Business review link
 
@@ -39,12 +39,14 @@ export const siteConfig = {
   },
 
   seo: {
-    title: "Professional Cleaning Services in Kannur | Clean UP",
+    title: "Best Cleaning Service in Kannur | Clean UP",
     description:
-      "Clean UP provides professional house deep cleaning, glass cleaning and interlock cleaning across Kannur and nearby areas. Free estimate and site visit.",
+      "Best cleaning service in Kannur — Clean UP offers professional house deep cleaning, glass cleaning and interlock cleaning with a free estimate and site visit.",
     keywords: [
+      "best cleaning service in Kannur",
+      "best cleaning services Kannur",
+      "top cleaning company Kannur",
       "cleaning services Kannur",
-      "cleaning services in Kannur",
       "cleaning company Kannur",
       "professional cleaning Kannur",
       "home cleaning Kannur",

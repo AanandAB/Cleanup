@@ -11,10 +11,15 @@ import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { Reviews } from "@/components/sections/Reviews";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTA } from "@/components/sections/CTA";
+import { faqPageJsonLd } from "@/lib/jsonld";
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd()) }}
+      />
       <Header />
       <main>
         <Hero />

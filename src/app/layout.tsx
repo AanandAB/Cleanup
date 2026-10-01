@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
-import { localBusinessJsonLd, organizationJsonLd } from "@/lib/jsonld";
+import { localBusinessJsonLd, organizationJsonLd, serviceListJsonLd } from "@/lib/jsonld";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { LenisProvider } from "@/components/LenisProvider";
 import { ScrollProgress } from "@/components/ScrollProgress";
@@ -85,6 +85,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceListJsonLd()) }}
         />
         <ThemeProvider>
           <LenisProvider>
