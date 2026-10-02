@@ -57,6 +57,20 @@ export default function PrivacyPage() {
         service, after which it is deleted or anonymised.
       </p>
 
+      <h2 className="font-display text-lg font-bold text-heading">Security &amp; data breaches</h2>
+      <p>
+        We use reasonable security measures to protect your information. In the event of
+        a data breach, we will notify affected individuals and the relevant authorities
+        (including CERT-In and the Data Protection Board) as required by applicable law.
+      </p>
+
+      <h2 className="font-display text-lg font-bold text-heading">Children&apos;s privacy</h2>
+      <p>
+        Our services are intended for adults. We do not knowingly collect personal
+        information from children under 18. If we learn we have collected such data, we
+        will delete it promptly.
+      </p>
+
       <h2 className="font-display text-lg font-bold text-heading">Contact</h2>
       <p>
         For privacy questions or requests, email {siteConfig.email} or contact us at{" "}

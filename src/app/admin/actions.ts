@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
 import { getDb } from "@/lib/db";
 import { gallery, projects, services, settings } from "@/db/schema";
+import { requireAdmin } from "@/lib/auth";
 
 // ── FormData helpers ───────────────────────────────────────
 
@@ -43,6 +44,7 @@ const SETTING_KEYS = [
 ];
 
 export async function saveSettings(formData: FormData) {
+  await requireAdmin();
   const db = getDb();
   for (const key of SETTING_KEYS) {
     const value = String(formData.get(key) ?? "").trim();
@@ -59,6 +61,7 @@ export async function saveSettings(formData: FormData) {
 // ── Services ───────────────────────────────────────────────
 
 export async function saveService(formData: FormData) {
+  await requireAdmin();
   const db = getDb();
   const id = str(formData, "id");
   const data = {
@@ -80,6 +83,7 @@ export async function saveService(formData: FormData) {
 }
 
 export async function deleteService(formData: FormData) {
+  await requireAdmin();
   const db = getDb();
   const id = str(formData, "id");
   if (id) await db.delete(services).where(eq(services.id, id));
@@ -90,6 +94,7 @@ export async function deleteService(formData: FormData) {
 // ── Projects ───────────────────────────────────────────────
 
 export async function saveProject(formData: FormData) {
+  await requireAdmin();
   const db = getDb();
   const id = str(formData, "id");
   let images: string[] = [];
@@ -117,6 +122,7 @@ export async function saveProject(formData: FormData) {
 }
 
 export async function deleteProject(formData: FormData) {
+  await requireAdmin();
   const db = getDb();
   const id = str(formData, "id");
   if (id) await db.delete(projects).where(eq(projects.id, id));
@@ -127,6 +133,7 @@ export async function deleteProject(formData: FormData) {
 // ── Gallery (photos via data-URL / videos via URL) ─────────
 
 export async function saveGalleryItem(formData: FormData) {
+  await requireAdmin();
   const db = getDb();
   const id = str(formData, "id");
   const data = {
@@ -144,6 +151,7 @@ export async function saveGalleryItem(formData: FormData) {
 }
 
 export async function deleteGalleryItem(formData: FormData) {
+  await requireAdmin();
   const db = getDb();
   const id = str(formData, "id");
   if (id) await db.delete(gallery).where(eq(gallery.id, id));
