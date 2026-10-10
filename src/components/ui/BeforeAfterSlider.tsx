@@ -53,6 +53,8 @@ export function BeforeAfterSlider({
       <img
         src={after}
         alt={`${alt} — after`}
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 h-full w-full object-cover"
         draggable={false}
       />
@@ -61,6 +63,8 @@ export function BeforeAfterSlider({
         <img
           src={before}
           alt={`${alt} — before`}
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
           draggable={false}
         />

@@ -21,8 +21,8 @@ export function BeforeAfter() {
         </Reveal>
         <Reveal delay={0.1} className="mx-auto mt-10 max-w-2xl">
           <BeforeAfterSlider
-            before="https://picsum.photos/seed/cleanup-before/1200/900"
-            after="https://picsum.photos/seed/cleanup-after/1200/900"
+            before="https://picsum.photos/seed/cleanup-before/900/675"
+            after="https://picsum.photos/seed/cleanup-after/900/675"
             alt="Cleaning transformation"
           />
         </Reveal>
