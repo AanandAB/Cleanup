@@ -41,6 +41,8 @@ const SETTING_KEYS = [
   "hours",
   "instagram",
   "facebook",
+  "before_image",
+  "after_image",
 ];
 
 export async function saveSettings(formData: FormData) {
