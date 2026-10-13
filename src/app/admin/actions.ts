@@ -41,8 +41,6 @@ const SETTING_KEYS = [
   "hours",
   "instagram",
   "facebook",
-  "before_image",
-  "after_image",
 ];
 
 export async function saveSettings(formData: FormData) {
@@ -58,6 +56,30 @@ export async function saveSettings(formData: FormData) {
   revalidatePath("/admin/settings");
   revalidatePath("/");
   redirect("/admin/settings");
+}
+
+// ── Before & After section ────────────────────────────────
+
+const BEFORE_AFTER_KEYS = [
+  "before_image",
+  "after_image",
+  "before_after_title",
+  "before_after_subtitle",
+];
+
+export async function saveBeforeAfter(formData: FormData) {
+  await requireAdmin();
+  const db = getDb();
+  for (const key of BEFORE_AFTER_KEYS) {
+    const value = String(formData.get(key) ?? "").trim();
+    await db
+      .insert(settings)
+      .values({ key, value })
+      .onConflictDoUpdate({ target: settings.key, set: { value } });
+  }
+  revalidatePath("/admin/before-after");
+  revalidatePath("/");
+  redirect("/admin/before-after");
 }
 
 // ── Services ───────────────────────────────────────────────

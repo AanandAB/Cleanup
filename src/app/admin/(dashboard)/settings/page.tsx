@@ -1,6 +1,5 @@
 import { getAllSettings } from "@/lib/admin";
 import { saveSettings } from "@/app/admin/actions";
-import { ImageField } from "@/components/admin/ImageField";
 
 export const dynamic = "force-dynamic";
 
@@ -47,30 +46,6 @@ export default async function SettingsPage() {
             />
           </div>
         ))}
-
-        {/* Before & After section images */}
-        <div className="rounded-xl border border-cool bg-surface/40 p-4">
-          <h2 className="mb-1 text-sm font-bold text-heading">
-            Homepage — Before &amp; After section
-          </h2>
-          <p className="mb-3 text-xs text-ink-muted">
-            Upload or paste a URL for each side of the comparison slider.
-          </p>
-          <ImageField
-            name="before_image"
-            label="Before image"
-            defaultValue={s["before_image"] ?? ""}
-            hint="Shown on the before side of the slider."
-          />
-          <div className="mt-4">
-            <ImageField
-              name="after_image"
-              label="After image"
-              defaultValue={s["after_image"] ?? ""}
-              hint="Shown on the after side of the slider."
-            />
-          </div>
-        </div>
 
         <button
           type="submit"

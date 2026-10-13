@@ -5,6 +5,7 @@ const cards = [
   { href: "/admin/settings", title: "Settings", desc: "Contact info, phone, WhatsApp, email, social links." },
   { href: "/admin/services", title: "Services", desc: "Edit house deep cleaning, glass and interlock content." },
   { href: "/admin/projects", title: "Projects", desc: "Add case studies with before/after photos." },
+  { href: "/admin/before-after", title: "Before & After", desc: "Edit the homepage comparison slider images and text." },
   { href: "/admin/gallery", title: "Gallery & Media", desc: "Upload photos and videos for the site." },
 ];
 

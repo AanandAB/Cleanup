@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  ArrowLeftRight,
   FolderKanban,
   Images,
   LayoutDashboard,
@@ -17,6 +18,7 @@ const items = [
   { href: "/admin/settings", label: "Settings", icon: Settings },
   { href: "/admin/services", label: "Services", icon: Sparkles },
   { href: "/admin/projects", label: "Projects", icon: FolderKanban },
+  { href: "/admin/before-after", label: "Before & After", icon: ArrowLeftRight },
   { href: "/admin/gallery", label: "Gallery & Media", icon: Images },
 ];
 
