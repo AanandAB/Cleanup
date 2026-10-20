@@ -16,6 +16,19 @@ export async function LocationPageContent({ location }: { location: LocationPage
 
   return (
     <>
+      {/* Unique area copy */}
+      {location.content.length > 0 && (
+        <section className="pt-12 md:pt-16">
+          <Container className="max-w-3xl">
+            <div className="space-y-4 text-[15px] leading-relaxed text-ink/80">
+              {location.content.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+
       {/* Services available here */}
       <section className="py-16 md:py-20">
         <Container>
