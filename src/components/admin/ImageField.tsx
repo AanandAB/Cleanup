@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
  */
 
 const inputCls =
-  "w-full rounded-xl border border-cool bg-surface px-3.5 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
+  "w-full rounded-xl border border-cool bg-surface px-3.5 py-2.5 text-base text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
 
 function compressImage(file: File, maxDim: number, quality: number): Promise<string> {
   return new Promise((resolve, reject) => {

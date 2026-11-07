@@ -26,7 +26,7 @@ export default function LoginPage() {
   }
 
   const inputCls =
-    "w-full rounded-xl border border-cool bg-surface px-4 py-3 text-sm text-ink placeholder:text-ink-muted/60 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
+    "w-full rounded-xl border border-cool bg-surface px-4 py-3 text-base text-ink placeholder:text-ink-muted/60 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-ice px-4">

@@ -7,7 +7,7 @@ import { ImageField } from "@/components/admin/ImageField";
 export const dynamic = "force-dynamic";
 
 const inputCls =
-  "w-full rounded-xl border border-cool bg-surface px-3.5 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
+  "w-full rounded-xl border border-cool bg-surface px-3.5 py-2.5 text-base text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
 
 export default async function GalleryPage() {
   const list = await listGalleryAdmin();
@@ -45,14 +45,14 @@ export default async function GalleryPage() {
           hint="Photos are compressed in your browser. For videos, paste a YouTube / Google Drive link."
         />
 
-        <button type="submit" className="rounded-xl bg-gradient-to-br from-brand via-electric to-brand-light px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/25 transition hover:brightness-105">
+        <button type="submit" className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-br from-brand via-electric to-brand-light px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/25 transition hover:brightness-105 sm:w-auto">
           Add to gallery
         </button>
       </form>
 
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
         {list.map((g) => (
-          <div key={g.id} className="flex items-center justify-between rounded-2xl border border-cool bg-surface px-5 py-4">
+          <div key={g.id} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-cool bg-surface px-5 py-4">
             <div className="flex min-w-0 items-center gap-3">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand/10 text-brand">
                 {g.kind === "video" ? <Film className="h-4.5 w-4.5" /> : <ImageIcon className="h-4.5 w-4.5" />}

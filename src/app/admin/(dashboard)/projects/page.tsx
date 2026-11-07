@@ -6,7 +6,7 @@ import { ProjectImagesField } from "@/components/admin/ProjectImagesField";
 export const dynamic = "force-dynamic";
 
 const inputCls =
-  "w-full rounded-xl border border-cool bg-surface px-3.5 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
+  "w-full rounded-xl border border-cool bg-surface px-3.5 py-2.5 text-base text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
 
 export default async function ProjectsPage({
   searchParams,
@@ -59,12 +59,12 @@ export default async function ProjectsPage({
 
         <ProjectImagesField defaultValue={editing?.images ?? []} />
 
-        <div className="flex gap-3">
-          <button type="submit" className="rounded-xl bg-gradient-to-br from-brand via-electric to-brand-light px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/25 transition hover:brightness-105">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <button type="submit" className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-br from-brand via-electric to-brand-light px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/25 transition hover:brightness-105 sm:w-auto">
             {editing ? "Update project" : "Add project"}
           </button>
           {editing && (
-            <Link href="/admin/projects" className="rounded-xl border border-cool bg-surface px-6 py-3 text-sm font-semibold text-ink">
+            <Link href="/admin/projects" className="inline-flex w-full items-center justify-center rounded-xl border border-cool bg-surface px-6 py-3 text-sm font-semibold text-ink sm:w-auto">
               Cancel
             </Link>
           )}
@@ -73,7 +73,7 @@ export default async function ProjectsPage({
 
       <div className="mt-8 space-y-3">
         {list.map((p) => (
-          <div key={p.id} className="flex items-center justify-between rounded-2xl border border-cool bg-surface px-5 py-4">
+          <div key={p.id} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-cool bg-surface px-5 py-4">
             <div>
               <p className="font-semibold text-heading">{p.title}</p>
               <p className="text-xs text-ink-muted">{p.location} · {p.type}</p>

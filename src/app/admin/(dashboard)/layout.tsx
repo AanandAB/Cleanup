@@ -10,9 +10,13 @@ export default async function DashboardLayout({
   await requireAdmin(); // redirects to /admin/login when no session
 
   return (
-    <div className="flex min-h-screen bg-ice">
+    <div className="min-h-screen bg-ice">
       <AdminSidebar />
-      <main className="min-w-0 flex-1 p-5 md:p-8">{children}</main>
+      {/* `md:pl-64` clears the fixed desktop sidebar (w-60 = 15rem). On mobile
+          the sidebar is a sticky top bar + drawer, so content just flows below. */}
+      <main className="min-w-0 px-4 pb-12 pt-4 sm:px-6 md:pl-64 md:pr-8 md:pt-8">
+        {children}
+      </main>
     </div>
   );
 }

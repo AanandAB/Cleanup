@@ -5,7 +5,7 @@ import { ImageField } from "@/components/admin/ImageField";
 export const dynamic = "force-dynamic";
 
 const inputCls =
-  "w-full rounded-xl border border-cool bg-surface px-3.5 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
+  "w-full rounded-xl border border-cool bg-surface px-3.5 py-2.5 text-base text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
 
 export default async function BeforeAfterPage() {
   const s = await getAllSettings();
@@ -69,7 +69,7 @@ export default async function BeforeAfterPage() {
 
         <button
           type="submit"
-          className="rounded-xl bg-gradient-to-br from-brand via-electric to-brand-light px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/25 transition hover:brightness-105"
+          className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-br from-brand via-electric to-brand-light px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/25 transition hover:brightness-105 sm:w-auto"
         >
           Save changes
         </button>

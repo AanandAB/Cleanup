@@ -4,7 +4,7 @@ import { saveSettings } from "@/app/admin/actions";
 export const dynamic = "force-dynamic";
 
 const inputCls =
-  "w-full rounded-xl border border-cool bg-surface px-3.5 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
+  "w-full rounded-xl border border-cool bg-surface px-3.5 py-2.5 text-base text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
 
 const fields = [
   { key: "phone", label: "Phone (10-digit national)" },
@@ -49,7 +49,7 @@ export default async function SettingsPage() {
 
         <button
           type="submit"
-          className="rounded-xl bg-gradient-to-br from-brand via-electric to-brand-light px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/25 transition hover:brightness-105"
+          className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-br from-brand via-electric to-brand-light px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/25 transition hover:brightness-105 sm:w-auto"
         >
           Save settings
         </button>
