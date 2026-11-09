@@ -2,12 +2,9 @@ import Link from "next/link";
 import { Film, ImageIcon } from "lucide-react";
 import { listGalleryAdmin } from "@/lib/admin";
 import { deleteGalleryItem, saveGalleryItem } from "@/app/admin/actions";
-import { ImageField } from "@/components/admin/ImageField";
+import { GalleryAddForm } from "@/components/admin/GalleryAddForm";
 
 export const dynamic = "force-dynamic";
-
-const inputCls =
-  "w-full rounded-xl border border-cool bg-surface px-3.5 py-2.5 text-base text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
 
 export default async function GalleryPage() {
   const list = await listGalleryAdmin();
@@ -22,33 +19,7 @@ export default async function GalleryPage() {
         Google Drive link.
       </p>
 
-      <form action={saveGalleryItem} className="mt-8 space-y-5 rounded-3xl border border-cool bg-surface p-6">
-        <h2 className="font-display text-base font-bold text-heading">Add a photo or video</h2>
-
-        <div className="grid gap-5 sm:grid-cols-2">
-          <div>
-            <label htmlFor="title" className="mb-1.5 block text-sm font-semibold text-heading">Title</label>
-            <input id="title" name="title" placeholder="e.g. Interlock before & after" className={inputCls} />
-          </div>
-          <div>
-            <label htmlFor="kind" className="mb-1.5 block text-sm font-semibold text-heading">Type</label>
-            <select id="kind" name="kind" className={inputCls}>
-              <option value="photo">Photo</option>
-              <option value="video">Video</option>
-            </select>
-          </div>
-        </div>
-
-        <ImageField
-          name="url"
-          label="Photo (upload) or video URL (paste link)"
-          hint="Photos are compressed in your browser. For videos, paste a YouTube / Google Drive link."
-        />
-
-        <button type="submit" className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-br from-brand via-electric to-brand-light px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand/25 transition hover:brightness-105 sm:w-auto">
-          Add to gallery
-        </button>
-      </form>
+      <GalleryAddForm saveGalleryItem={saveGalleryItem} />
 
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
         {list.map((g) => (

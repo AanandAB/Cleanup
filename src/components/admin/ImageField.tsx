@@ -9,6 +9,12 @@ import { cn } from "@/lib/utils";
  * photo that is downscaled + re-encoded to JPEG in the browser and stored as
  * a `data:image/jpeg;base64,…` string — no R2, no server endpoint.
  * The value lives in a hidden input that plugs into any server-action form.
+ *
+ * Reports its `busy` (compressing) state upward via `onBusyChange` so a parent
+ * form can disable its submit button while an image is being prepared, shows a
+ * thumbnail preview for both pasted URLs and uploaded photos, and surfaces a
+ * visible error if compression fails (e.g. an unsupported HEIC file) instead
+ * of leaving the field silently empty.
  */
 
 const inputCls =
@@ -47,38 +53,50 @@ export function ImageField({
   defaultValue = "",
   hint,
   onChange,
+  onBusyChange,
 }: {
   name?: string;
   label: string;
   defaultValue?: string;
   hint?: string;
   onChange?: (value: string) => void;
+  onBusyChange?: (busy: boolean) => void;
 }) {
   const [mode, setMode] = useState<"url" | "upload">(
     defaultValue.startsWith("data:") ? "upload" : "url",
   );
   const [value, setValue] = useState(defaultValue);
   const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
   function update(v: string) {
     setValue(v);
+    setError(null);
     onChange?.(v);
+  }
+
+  function setBusyAndNotify(b: boolean) {
+    setBusy(b);
+    onBusyChange?.(b);
   }
 
   async function onFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
-    setBusy(true);
+    setBusyAndNotify(true);
+    setError(null);
     try {
       // Resize to max 1000px @ 0.75 JPEG before storing as a base64 data URL.
       // Kept small on purpose: images live in D1 (Cloudflare free tier), so a
       // smaller image = less storage + fewer read/write bytes.
       update(await compressImage(file, 1000, 0.75));
     } catch {
-      // leave value unchanged on failure
+      // Surface the failure instead of silently leaving the field empty
+      // (common with HEIC photos or unreadable files).
+      setError("Couldn't read that image. Try a JPEG or PNG file.");
     } finally {
-      setBusy(false);
+      setBusyAndNotify(false);
     }
   }
 
@@ -146,13 +164,21 @@ export function ImageField({
         </div>
       )}
 
-      {value && !value.startsWith("data:") && (
+      {/* Thumbnail preview — shown for both pasted URLs and uploaded photos
+          (data URLs) so the user can confirm the image actually attached. */}
+      {value && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={value}
           alt=""
-          className="mt-2 h-20 w-auto rounded-lg border border-cool object-cover"
+          className="mt-2 h-24 w-auto rounded-lg border border-cool object-cover"
         />
+      )}
+
+      {error && (
+        <p className="mt-2 rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-600">
+          {error}
+        </p>
       )}
 
       {hint && <p className="mt-1 text-xs text-ink-muted">{hint}</p>}

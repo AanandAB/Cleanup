@@ -156,14 +156,27 @@ export async function deleteProject(formData: FormData) {
 
 // ── Gallery (photos via data-URL / videos via URL) ─────────
 
-export async function saveGalleryItem(formData: FormData) {
+export async function saveGalleryItem(
+  _prevState: { error?: string },
+  formData: FormData,
+): Promise<{ error?: string }> {
   await requireAdmin();
   const db = getDb();
   const id = str(formData, "id");
+  const title = str(formData, "title");
+  const url = str(formData, "url");
+
+  // Guard against silent empty rows: an item with no title or no image/video
+  // URL would render as a broken box on the public gallery. Return an inline
+  // error (surfaced by GalleryAddForm's useActionState) instead of saving.
+  if (!title || !url) {
+    return { error: "Please add a title and a photo or video link." };
+  }
+
   const data = {
-    title: str(formData, "title"),
+    title,
     kind: (str(formData, "kind") === "video" ? "video" : "photo") as "photo" | "video",
-    url: str(formData, "url"),
+    url,
   };
   if (id) {
     await db.update(gallery).set(data).where(eq(gallery.id, id));
